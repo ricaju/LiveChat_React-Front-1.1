@@ -8,17 +8,6 @@ import gificon from './gificon.png';
 import { setContext } from 'apollo-link-context';
 
 
-/*const MUTATION_FOR_NEW_MESSAGES= gql` 
-  mutation mutationForNewMessages($content: String!, $from: String!) {
-    createMessage(content: $content, from: $from) {
-      id
-      sentAt                                        
-      from
-      content
-    }
-  }
-  `;*/
-
 class SendingMessages extends Component {
 	constructor(props) {
 		super(props);
