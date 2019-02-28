@@ -9,6 +9,9 @@ import PrivateMessages from './PrivateMessages';
 import logouticon from './logouticon.png';
 import '../ChatContainerALL.css';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
+import {PrivateRoute} from '../PrivateRoute';
+import EditProfile from '../EditProfile';
 
 
 class Sidebar extends Component {
@@ -26,9 +29,21 @@ class Sidebar extends Component {
       dropdownOpen: !this.state.dropdownOpen
     });
   }
+
 	
 
 render() {
+	if(this.state.editProfile){
+		return(
+			<Router>
+	          <div>
+	            <Redirect to="/EditProfile" />
+	            <PrivateRoute path="/EditProfile" exact={true} component={EditProfile} />
+	          </div>       
+        	</Router>
+        )		    		
+	}
+	else{
 	return(
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
@@ -48,10 +63,10 @@ render() {
 					</Button>
 					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni" color="primary">
 						  <DropdownToggle caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
-						    Settings
+						    SETTINGS
 						  </DropdownToggle>
 						  <DropdownMenu>
-						    <DropdownItem>Edit profile</DropdownItem>
+						    <DropdownItem >Edit profile</DropdownItem>
 						    <DropdownItem>LOGOUT</DropdownItem>
 						  </DropdownMenu>
 						</ButtonDropdown>
@@ -59,6 +74,7 @@ render() {
 			</div>
 	    </div>	
 	);
+	}
 }
 }
   
