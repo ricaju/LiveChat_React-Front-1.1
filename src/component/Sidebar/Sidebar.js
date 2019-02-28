@@ -8,9 +8,24 @@ import travelicon from './travelicon.png';
 import PrivateMessages from './PrivateMessages';
 import logouticon from './logouticon.png';
 import '../ChatContainerALL.css';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
 class Sidebar extends Component {
+	constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
 	
 
 render() {
@@ -31,9 +46,15 @@ render() {
 					<Button className="Buttoni" color="danger"><img className='imgbuttoni' alt='techicon' src={techicon}/>
 						TECH
 					</Button>
-					<Button className="Buttoni" color="primary"><img className='imgbuttoni' alt='logout' src={logouticon}/>
-					LOGOUT
-					</Button>
+					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni" color="primary">
+						  <DropdownToggle caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
+						    Settings
+						  </DropdownToggle>
+						  <DropdownMenu>
+						    <DropdownItem>Edit profile</DropdownItem>
+						    <DropdownItem>LOGOUT</DropdownItem>
+						  </DropdownMenu>
+						</ButtonDropdown>
 				</ButtonGroup>
 			</div>
 	    </div>	
