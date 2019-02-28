@@ -12,6 +12,7 @@ import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reac
 import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 import {PrivateRoute} from '../PrivateRoute';
 import EditProfile from '../EditProfile';
+import { Redirect, Route } from "react-router-dom";
 
 
 class Sidebar extends Component {
@@ -20,7 +21,8 @@ class Sidebar extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      logout: false
     };
   }
 
@@ -29,9 +31,7 @@ class Sidebar extends Component {
       dropdownOpen: !this.state.dropdownOpen
     });
   }
-
-	
-
+  
 render() {
 	if(this.state.editProfile){
 		return(
@@ -44,7 +44,21 @@ render() {
         )		    		
 	}
 	else{
+render() {
+	 if(this.state.logut){
 	return(
+		<Router>
+	 		<div>
+			<Redirect to="/"/>
+			<Route path="/" component={ChatContainerALL}>
+			</Route>
+			</div>
+		</Router>
+	}
+	)
+}
+			
+
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
@@ -68,6 +82,8 @@ render() {
 						  <DropdownMenu>
 						    <DropdownItem >Edit profile</DropdownItem>
 						    <DropdownItem>LOGOUT</DropdownItem>
+						    <DropdownItem>Edit profile</DropdownItem>
+						    <DropdownItem onClick={this.setState({logut:true})}>LOGOUT</DropdownItem>
 						  </DropdownMenu>
 						</ButtonDropdown>
 				</ButtonGroup>
