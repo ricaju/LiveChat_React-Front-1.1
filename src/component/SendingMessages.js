@@ -62,6 +62,7 @@ class SendingMessages extends Component {
 							style={{maxwidth: "100%", boxsizing: "border-box", resize: "none", height: "25vh"}}
 							name="text"
 							id="message"
+							value={this.state.text}
 							placeholder="Enter your message(s)"
 							onChange={e => this.setState( {text: e.target.value} )}
 							onKeyPress={this.handleKeyPress}
