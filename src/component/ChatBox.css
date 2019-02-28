@@ -1,0 +1,14 @@
+.listItems{
+	list-style-type: none;
+	display: flex;
+	text-align: left;
+}
+
+.userName {
+	color: #45A29E;
+	text-transform: uppercase;
+}
+
+.messages{
+	color: white;
+}

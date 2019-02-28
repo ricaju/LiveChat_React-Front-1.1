@@ -1,0 +1,57 @@
+/*#btns{
+	display: flex;
+   flex-direction: row;
+   align-content: flex-end;
+   justify-content: center;
+   flex-flow: column wrap;
+	
+}*/
+
+.btn-all{
+	display: flex;
+   flex-direction: row;
+   align-content: flex-end;
+   justify-content: center;
+   flex-flow: column wrap;
+   
+}
+
+#btn1 {
+	margin-bottom: 15px;
+	background: transparent;
+	border: solid 1px #45A29E;
+	
+}
+#btn1:hover {
+	background: #45A29E;
+	border: solid 1px #45A29E;
+}
+
+#btn2 {
+	margin-bottom:  15px;
+	background: transparent;
+	align-items: center;
+	border-radius: 50%;
+	border: none;
+	outline: none;
+
+}
+#btn2:focus {
+	outline:0 !important;
+	box-shadow: none;
+}
+
+#btn3 {
+
+	background: transparent;
+	align-items: center;
+	border-radius: 50%;
+	border: none;
+	outline: none;
+
+}
+#btn3:focus {
+	outline:0 !important;
+	box-shadow: none;
+}
+

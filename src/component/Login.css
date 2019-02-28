@@ -1,0 +1,32 @@
+
+#bc-login{
+	
+	padding-top: 3vh;
+	height:  40vh;
+	width: auto;
+	background-color: rgba(69, 162, 158, 0.8);  
+	display: flex;
+	justify-content: center;
+	margin-top: 10vh;
+	font-weight: bold;
+	color: white;
+	
+}
+#button{
+	background-color: transparent;
+	border: 2px solid #55BCC9;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: auto;
+  
+}
+#button:hover {
+	background-color:  #1F2833;
+	color: white;
+	border: 2px solid #66FCF1;
+
+}
