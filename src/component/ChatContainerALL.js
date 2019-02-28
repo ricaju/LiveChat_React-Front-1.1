@@ -15,6 +15,7 @@ class ChatContainerALL extends Component {
 	    super(props);
 	    this.state = {
 	      toggle: true,
+	   
 	    }
 	  }
 
