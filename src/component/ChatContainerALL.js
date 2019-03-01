@@ -38,7 +38,13 @@ class ChatContainerALL extends Component {
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar EditProfile={this.handelEditProfile} Hide={this.handleToggle}/> </aside>
 						{this.state.toggle ?
-	  					<aside className="aside aside-2" >Toggle private messages</aside> : null}
+	  					<aside className="aside aside-2" >Toggle private messages
+	  							<p>blaglad</p>
+	  							<p>blaglad</p>
+	  							<p>blaglad</p>
+	  							<p>blaglad</p>
+	  							<p>blaglad</p>
+	  					</aside> : null}
   					</div>
   					<div className='columns'>
 	  					<div className="container1">

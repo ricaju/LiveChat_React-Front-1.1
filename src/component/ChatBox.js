@@ -32,11 +32,11 @@ const messagesQuery = gql`
 //({new Date(message.createdAt).toLocaleString()})
 
 const MessageItem = ({ message }) => (
-  <li style={{ borderTop: '1px solid lightgray' }}>
-    <p>
-      {message.username}: {' '}
-      {message.text} {' '}
-    </p>
+  <li className='listItems'>
+    <span className='userName'>{message.username}: </span> +  
+    {' '}
+     <span className='messages'> {message.text} </span> 
+    
   </li>
 );
 
