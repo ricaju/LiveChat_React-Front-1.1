@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Button} from 'reactstrap';
-import {Form, FormGroup, Label, Input} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import './Registration.css';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';

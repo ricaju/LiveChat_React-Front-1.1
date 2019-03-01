@@ -5,7 +5,6 @@ import {Form, Input, Button, Container} from 'reactstrap';
 import './SendingMessages.css';
 import smileicon from './smileicon.png';
 import gificon from './gificon.png';
-import { setContext } from 'apollo-link-context';
 
 
 class SendingMessages extends Component {
@@ -59,7 +58,7 @@ class SendingMessages extends Component {
 						/>
 					</Form>					
 				</Container>
-				<Container className=" p-1 col-2" className= 'btn-all' /*id= 'btns'*/>
+				<Container className=" p-1 col-2 btn-all">
 					<Button id='btn1' 
 						onClick={this.sendingMessage}
 						>Send
