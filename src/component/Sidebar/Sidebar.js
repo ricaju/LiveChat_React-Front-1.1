@@ -15,6 +15,8 @@ import EditProfile from '../EditProfile';
 import { withRouter } from 'react-router-dom';
 
 
+
+
 class Sidebar extends Component {
 	constructor(props) {
     super(props);
@@ -44,7 +46,7 @@ class Sidebar extends Component {
 
 
 render() {
-	return(
+	return(		
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
