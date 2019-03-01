@@ -5,6 +5,53 @@ import gql from 'graphql-tag';
 
 
 class EditProfile extends Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			username: "",
+			newUsername: "",
+			password:"",
+			newPassword:""
+		}
+	}
+
+	// napraviti: za valicadiju i ostalo
+
+	handleSubmit = async (e) => {    
+    e.preventDefault();
+    const check = await this.checkValid();    
+    if(!check) {  
+    }
+    else {
+      var token = await this.props.mutate({
+        variables: {
+          username : this.state.username,
+          newUsername : this.state.newUsername,
+          password : this.state.password,
+          newPassword : this.state.newPassword
+        },
+      });
+
+      /*if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}') {
+        var usernameValid = 'Username already taken';
+        this.setState({ usernameValid })
+      }
+      else if (JSON.stringify(token) === '{"data":{"register":"Email already exists"}}') {
+        var emailValid = 'Email already exists';
+        this.setState({ emailValid })
+      }
+      else {
+        localStorage.setItem('jwt', JSON.stringify(token));
+        this.props.trigerChat()
+      }
+    }*/
+
+}}
+
+
+
+
+
 	render(){
 	const particleOptions= {
       particles: {
@@ -80,11 +127,11 @@ class EditProfile extends Component {
 
 } 
 
-const updateUserMutation = gql`
-  mutation updateUser($username: String!, $newUsername: String, $password: String!, $newPassword: String) {
-    login(username : $username,  newUsername : $newUsername, password : $password, newPassword: $newPassword)
+/*const updateUserMutation = gql`
+  mutation updateUser($username: String!, $newUsername: String, $password: String!, $newPassword: String, $token: String!) {
+    login(username : $username,  newUsername : $newUsername, password : $password, newPassword: $newPassword, token: $token)
   }
-`;
+`;*/
 
 
-export default(updateUserMutation) (EditProfile);
+export default EditProfile;
