@@ -164,11 +164,16 @@ class EditProfile extends Component {
 
 } 
 
-const updateUserMutation = gql`
-  mutation updateUser($username: String!, $newUsername: String, $password: String!, $newPassword: String, $token: String!) {
-    updateUser(username : $username,  newUsername : $newUsername, password : $password, newPassword: $newPassword, token: $token)
+const updateUsernameMutation = gql`
+  mutation updateUser($username: String!, $newUsername: String,  $token: String!) {
+    updateUsername(username : $username,  newUsername : $newUsername,  token: $token)
+  }
+`;
+const updatePasswordMutation = gql`
+  mutation updatePassword( $password: String!, $newPassword: String, $token: String!) {
+    updatePassword( password : $password, newPassword: $newPassword, token: $token)
   }
 `;
 
 
-export default  graphql(updateUserMutation)(withRouter(EditProfile)); 
+export default graphql(updateUsernameMutation,updatePasswordMutation)(withRouter(EditProfile)); 
