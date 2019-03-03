@@ -5,14 +5,13 @@ import messagesicon from './messagesicon.png';
 import sportsicon from './sportsicon.png';
 import techicon from './techicon.png';
 import travelicon from './travelicon.png';
-import PrivateMessages from './PrivateMessages';
 import logouticon from './logouticon.png';
 import '../ChatContainerALL.css';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
-import {PrivateRoute} from '../PrivateRoute';
-import EditProfile from '../EditProfile';
-import { Redirect, Route } from "react-router-dom";
+import {withRouter} from "react-router-dom";
+
+
+
 
 
 class Sidebar extends Component {
@@ -22,6 +21,7 @@ class Sidebar extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false,
+      editProfile: false,
       logout: false
     };
   }
@@ -31,34 +31,20 @@ class Sidebar extends Component {
       dropdownOpen: !this.state.dropdownOpen
     });
   }
-  
-render() {
-	if(this.state.editProfile){
-		return(
-			<Router>
-	          <div>
-	            <Redirect to="/EditProfile" />
-	            <PrivateRoute path="/EditProfile" exact={true} component={EditProfile} />
-	          </div>       
-        	</Router>
-        )		    		
-	}
-	else{
-render() {
-	 if(this.state.logut){
-	return(
-		<Router>
-	 		<div>
-			<Redirect to="/"/>
-			<Route path="/" component={ChatContainerALL}>
-			</Route>
-			</div>
-		</Router>
-	}
-	)
-}
-			
 
+  handleEditProfile = () => {
+  	this.setState({ editProfile: true }, () => this.props.history.push('/EditProfile'))
+  }
+
+  handleLogout = () => {
+  	this.setState({ logout: true }, () => this.props.history.push('/'))
+  }
+
+
+
+render() {
+	return(	
+	<>	
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
@@ -80,19 +66,17 @@ render() {
 						    SETTINGS
 						  </DropdownToggle>
 						  <DropdownMenu>
-						    <DropdownItem >Edit profile</DropdownItem>
-						    <DropdownItem>LOGOUT</DropdownItem>
-						    <DropdownItem>Edit profile</DropdownItem>
-						    <DropdownItem onClick={this.setState({logut:true})}>LOGOUT</DropdownItem>
+						    <DropdownItem onClick={this.handleEditProfile} >Edit profile</DropdownItem>
+						    <DropdownItem onClick={this.handleLogout}>LOGOUT</DropdownItem>
 						  </DropdownMenu>
 						</ButtonDropdown>
 				</ButtonGroup>
 			</div>
 	    </div>	
+	</>
 	);
-	}
 }
 }
   
 
-export default Sidebar;
+export default withRouter(Sidebar);

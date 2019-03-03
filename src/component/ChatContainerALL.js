@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import ChatBox from './ChatBox';
 import Sidebar from './Sidebar/Sidebar';
 import ChatContainer from './ChatContainer';
 import SendingMessages from './SendingMessages';
@@ -14,8 +11,7 @@ class ChatContainerALL extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {
-	      toggle: true,
-	      editProfile: false
+	      toggle: true
 	    }
 	  }
 
@@ -31,11 +27,13 @@ class ChatContainerALL extends Component {
 		})
 	}
 	}
+
+
 	render() {	
 		return(
 			<div className="wrapper">
 					<div className='rows'>
-						<aside className="aside aside-1"><Sidebar  Hide={this.handleToggle}/> </aside>
+						<aside className="aside aside-1"><Sidebar Hide={this.handleToggle}/> </aside>
 						{this.state.toggle ?
 	  					<aside className="aside aside-2" >Toggle private messages</aside> : null}
   					</div>
@@ -53,4 +51,4 @@ class ChatContainerALL extends Component {
 		}
 	}
 
-export default ChatContainerALL;   //need to export grapfql querry
+export default ChatContainerALL;   
