@@ -8,6 +8,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
+
 const validToken = gql`
   mutation validToken($token: String!) {
     validToken(token : $token)
