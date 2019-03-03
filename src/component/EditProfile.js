@@ -1,59 +1,91 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom';
 import Particles from 'react-particles-js';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
 
 class EditProfile extends Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			username: "",
-			newUsername: "",
-			password:"",
-			newPassword:""
-		}
-	}
+  constructor(props){
+    super(props);
+    this.state = {
+      username: "",
+      newUsername: "",
+      password:"",
+      newPassword:"",
+      back: false,
+      usernameValid: "",
+      newUsernameValid: "",
+      passwordValid: "",
+      newPasswordValid: ""
+    }
+  }
 
-	// napraviti: za valicadiju i ostalo
+  handleChange = (e) => {
+  this.setState({ [e.target.name]: e.target.value })
+  };
 
-	handleSubmit = async (e) => {    
+  checkValid = () => {
+  let usernameValid = "";
+  let newUsernameValid = "";
+  let passwordValid = "";
+  let newPasswordValid = "";
+
+  if(!this.state.newUsername) {
+      newUsernameValid = "Username can't be empty";
+    }
+  if(this.state.newPassword.length < 5) {
+      newPasswordValid = "Password needs to have more than 5 characters";
+    }
+  if (usernameValid || newUsernameValid || passwordValid || newPasswordValid) {   
+    this.setState({ usernameValid, newUsernameValid, passwordValid, newPasswordValid });
+  }
+  else {
+    this.setState({ usernameValid, newUsernameValid, passwordValid, newPasswordValid });
+    return true;
+  }
+}
+
+
+
+  handleSubmit = async (e) => {    
     e.preventDefault();
     const check = await this.checkValid();    
     if(!check) {  
     }
     else {
+      const getToken = JSON.parse(localStorage.getItem('jwt'))
+      const token1 = getToken.data.login || getToken.data.register
+
       var token = await this.props.mutate({
         variables: {
           username : this.state.username,
           newUsername : this.state.newUsername,
           password : this.state.password,
-          newPassword : this.state.newPassword
+          newPassword : this.state.newPassword,
+          token: token1
         },
       });
 
-      /*if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}') {
-        var usernameValid = 'Username already taken';
-        this.setState({ usernameValid })
+      if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}') {
+        var newUsernameValid = 'Username already taken';
+        this.setState({ newUsernameValid })
       }
-      else if (JSON.stringify(token) === '{"data":{"register":"Email already exists"}}') {
-        var emailValid = 'Email already exists';
-        this.setState({ emailValid })
-      }
+      else if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}') {  // provjera za stari password! 
+        var passwordValid = "Your old password isn't correct!";
+        this.setState({ passwordValid })
+    }
       else {
         localStorage.setItem('jwt', JSON.stringify(token));
-        this.props.trigerChat()
+        this.setState({ back: true }, () => this.props.history.push('/HomePage'))
+
       }
-    }*/
+    }
+}
 
-}}
-
-
-
-
-
-	render(){
-	const particleOptions= {
+  render(){
+  const particleOptions= {
       particles: {
         number: {
           value: 80,
@@ -67,12 +99,12 @@ class EditProfile extends Component {
         },
       },
     };
-		
-	return(
-		<>
-			<Particles className='particles' params={particleOptions} />
-			<div className="col-md-8" id='bc-reg'>
-            <Form >
+    
+  return(
+    <>
+      <Particles className='particles' params={particleOptions} />
+      <div className="col-md-8" id='bc-reg'>
+            <Form onSubmit={e => this.handleSubmit(e)} >
                 <FormGroup>
                   <Label className= 'white' htmlFor="username">Username</Label>
                   <Input 
@@ -80,19 +112,21 @@ class EditProfile extends Component {
                   name="username" 
                   id="username" 
                   placeholder="Type your username"
+                  value={this.state.username}
                   onChange = {e => this.handleChange(e)}  />
-                  <div style={{color: "red"}}>  </div>
+                  <div style={{color: "red"}}> {this.state.usernameValid} </div>
                 </FormGroup>
                 <FormGroup>
-                  <Label className= 'white' htmlFor="email">Email</Label>
+                  <Label className= 'white' htmlFor="email">New username</Label>
                   <Input 
-                  type="email" 
-                  name="email" 
-                  id="email" 
-                  placeholder="Enter your email"
+                  type="text" 
+                  name="newUsername" 
+                  id="newUsername" 
+                  placeholder="Type your new username"
+                  value={this.state.newUsername}
                   onChange = {e => this.handleChange(e)}
                   />
-                  <div style={{color: "red"}}>  </div>
+                  <div style={{color: "red"}}> {this.state.newUsernameValid} </div>
                 </FormGroup>
                 <FormGroup>
                   <Label className= 'white' htmlFor="password"> Password </Label>
@@ -101,18 +135,21 @@ class EditProfile extends Component {
                   name="password" 
                   id="password" 
                   placeholder="Enter your password"
+                  value={this.state.password}
+                  onChange = {e => this.handleChange(e)}
                   />
-                  <div style={{color: "red"}}> </div>
+                  <div style={{color: "red"}}> {this.state.passwordValid} </div>
                 </FormGroup>
                 <FormGroup>
-                  <Label className= 'white' htmlFor="password"> Confirm Password </Label>
+                  <Label className= 'white' htmlFor="newPassword"> New password </Label>
                   <Input 
                   type="password" 
-                  name="confirmPassword" 
+                  name="newPassword" 
                   id="password1" 
-                  placeholder="Confirm your password"
+                  placeholder="Enter your new password"
+                  onChange = {e => this.handleChange(e)}
                   />
-                  <div style={{color: "red"}}> </div>
+                  <div style={{color: "red"}}> {this.state.newPasswordValid} </div>
                 </FormGroup>
                 <Button type="submit" 
                   name="submit" 
@@ -121,17 +158,17 @@ class EditProfile extends Component {
             </Form>
 
           </div>
-		</>
-		)
-	}
+    </>
+    )
+  }
 
 } 
 
-/*const updateUserMutation = gql`
+const updateUserMutation = gql`
   mutation updateUser($username: String!, $newUsername: String, $password: String!, $newPassword: String, $token: String!) {
-    login(username : $username,  newUsername : $newUsername, password : $password, newPassword: $newPassword, token: $token)
+    updateUser(username : $username,  newUsername : $newUsername, password : $password, newPassword: $newPassword, token: $token)
   }
-`;*/
+`;
 
 
-export default EditProfile;
+export default  graphql(updateUserMutation)(withRouter(EditProfile)); 
