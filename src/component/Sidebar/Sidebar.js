@@ -28,7 +28,10 @@ class Sidebar extends Component {
       dropdownOpen: false,
       editProfile: false,
       logout: false,
-      logged_token: JSON.parse(localStorage.getItem('jwt'))
+      logged_token: JSON.parse(localStorage.getItem('jwt')),
+      travel: "1",
+      sport: "2",
+      tech: "3"
     };
   }
 
@@ -55,6 +58,7 @@ class Sidebar extends Component {
 
 
 
+
 render() {
 	return(	
 	<>	
@@ -65,13 +69,13 @@ render() {
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
 				  			PRIVATE MESSAGES
 				  	</Button>
-					<Button className="Buttoni" color="warning"><img className='imgbuttoni' alt='travel' src={travelicon}/>
+					<Button className="Buttoni" color="warning"><img className='imgbuttoni' alt='travel' src={travelicon} value={this.state.travel} onClick={this.props.ChangingRoom()}/>
 						TRAVEL
 					</Button>
-				    <Button className="Buttoni" color="info"><img className='imgbuttoni' alt='sportsicon' src={sportsicon}/>
+				    <Button className="Buttoni" color="info"><img className='imgbuttoni' alt='sportsicon' src={sportsicon} value={this.state.sport} onClick={this.props.ChangingRoom}/>
 				    	SPORT
 				    </Button>
-					<Button className="Buttoni" color="danger"><img className='imgbuttoni' alt='techicon' src={techicon}/>
+					<Button className="Buttoni" color="danger"><img className='imgbuttoni' alt='techicon' src={techicon} value={this.state.tech} onClick={this.props.ChangingRoom}/>
 						TECH
 					</Button>
 					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni" color="primary">
