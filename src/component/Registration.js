@@ -61,11 +61,11 @@ class Registration extends Component {
           password : this.state.password
         },
       });
-      if (JSON.stringify(token) === '{"data":{"register":"Username already taken"}}') {
+      if (token.data.register === "Username already taken") {
         var usernameValid = 'Username already taken';
         this.setState({ usernameValid })
       }
-      else if (JSON.stringify(token) === '{"data":{"register":"Email already exists"}}') {
+      else if (token.data.register === "Email already exists") {
         var emailValid = 'Email already exists';
         this.setState({ emailValid })
       }
@@ -73,7 +73,7 @@ class Registration extends Component {
         localStorage.setItem('jwt', JSON.stringify(token));
         this.props.trigerChat()
       }
-    }};
+    }}
 
   render() {
     return (     
