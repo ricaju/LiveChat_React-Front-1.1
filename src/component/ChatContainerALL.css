@@ -83,6 +83,11 @@
   .imgbuttoni{
     width: 90px;
     height: 90px;
+   
+  }
+
+  .name-of-button{
+    text-align: center;
   }
 
   .aside-1 { flex: 0.5 0 0; }

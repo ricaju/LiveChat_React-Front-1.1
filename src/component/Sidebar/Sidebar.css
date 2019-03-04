@@ -1,3 +1,4 @@
+/* content of sidebar*/
 #cont{
 	color: white;
 	display: flex;
@@ -5,13 +6,14 @@
 	height: 100vh;
 	width: 100%;
 	justify-content: flex-start;
+	
 }
 .itemsList{
 	color: #0B0C10;
 }
 #button1{
-	margin-top: 20px;
-	background: #45A29E;
+	/*margin-top: 20px;*/
+	
 }
 .groups {
 	

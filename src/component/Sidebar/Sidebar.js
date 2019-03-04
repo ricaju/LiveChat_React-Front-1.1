@@ -52,7 +52,7 @@ render() {
 			<ButtonGroup vertical>
 				  <Button className="Buttoni" color="success" onClick={this.props.Hide}>
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
-				  			PRIVATE MESSAGES
+				  			<span className='name-of-button'>PRIVATE MESSAGES</span>
 				  	</Button>
 					<Button className="Buttoni" color="warning"><img className='imgbuttoni' alt='travel' src={travelicon}/>
 						TRAVEL
