@@ -4,9 +4,10 @@ import Particles from 'react-particles-js';
 import Login from '../Login';
 import Registration from '../Registration';
 import Logo from '../Logo/Logo.js';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button, ButtonGroup  } from 'reactstrap';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import '../Login.css';
 
 
 const validToken = gql`
@@ -83,11 +84,13 @@ class HomePage extends Component {
         <Container>
           <Row>
             <Col xs="6" className='left'><Logo /></Col>
-            <Col xs="6" >
+            <Col xs="6"  >
               <Row className="red">
                 <Col>
-                  <Button id='login' onClick={this.handeLog}>Login</Button>
-                  <Button id='registration' onClick={this.handleReg}>Registration</Button>
+                <ButtonGroup md= 'auto' className="positionOfButtons"> {/*css is in login.css*/}
+                  <Button  id='login' onClick={this.handeLog}>Login</Button>
+                  <Button  id='registration' onClick={this.handleReg}>Register</Button>
+                  </ButtonGroup>
                   {this.state.login ? <Login trigerChat={this.handleTriger} /> : null}
                   {this.state.registration ? <Registration trigerChat={this.handleTriger} /> : null}
                 </Col>

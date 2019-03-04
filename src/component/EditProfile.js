@@ -4,6 +4,7 @@ import Particles from 'react-particles-js';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import './EditProfile.css';
 
 
 class EditProfile extends Component {
@@ -22,6 +23,11 @@ class EditProfile extends Component {
     }
   }
 
+  handleGoBack = () => {
+    this.setState({ ChatContainerALL: true }, () => this.props.history.push('/ChatContainerALL'))
+  }
+
+
 handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   };
@@ -34,7 +40,7 @@ handleChange = (e) => {
 
     if (!this.state.newUsername && !this.state.newPassword){
       newUsernameValid = "You are not changing your username";
-      newPasswordValid = "You are not changin your password";
+      newPasswordValid = "You are not changing your password";
     }
     if (this.state.newUsername && !this.state.username) {
       usernameValid = "Enter your username";
@@ -109,7 +115,8 @@ handleChange = (e) => {
   return(
     <>
       <Particles className='particles' params={particleOptions} />
-      <div className="col-md-8" id='bc-reg'>
+      <Button onClick={this.handleGoBack}>BACK</Button>
+      <div className=" col-md-4   " id='formShape'>
             <Form onSubmit={e => this.handleSubmit(e)} >
                 <FormGroup>
                   <Label className= 'white' htmlFor="username">Username</Label>
@@ -162,7 +169,9 @@ handleChange = (e) => {
                   id="button"                   
                   >Submit</Button>
             </Form>
+
           </div>
+
     </>
     )
   }

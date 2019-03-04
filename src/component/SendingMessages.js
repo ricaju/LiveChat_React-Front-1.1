@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import {Form, Input, Button, Container} from 'reactstrap'; 
+import {Form, Input, Button, Container, ButtonGroup} from 'reactstrap'; 
 import './SendingMessages.css';
 import smileicon from './smileicon.png';
 import gificon from './gificon.png';
@@ -58,17 +58,34 @@ class SendingMessages extends Component {
 						/>
 					</Form>					
 				</Container>
-				<Container className=" p-1 col-2 btn-all">
-					<Button id='btn1' 
+				<Container className=" p-1 col btn-all">
+				<ButtonGroup vertical size="sm">
+					  <Button id='btn1' 
+						onClick={this.sendingMessage}
+						>Send
+					</Button>
+
+					  <Button className= 'btn-all' id ='btn2'
+						><img style={{height: 25, width: 25}} alt='smile' src={smileicon}/>
+						
+					</Button>
+
+					  <Button  className= 'btn-all' id= 'btn3'
+						><img style={{height: 25, width: 25}} alt='smile' src={gificon}/>
+					</Button>
+				 </ButtonGroup>
+					{/*<Button id='btn1' 
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
 					<Button className= 'btn-all' id ='btn2'
-						><img style={{height: 25, width: 25}} alt='smile' src={smileicon}/>
+						>{/*<img style={{height: 25, width: 25}} alt='smile' src={smileicon}/>*/}
+						{/*SMAJLICI
 					</Button>
 					<Button  className= 'btn-all' id= 'btn3'
-						><img style={{height: 25, width: 25}} alt='smile' src={gificon}/>
-					</Button>
+						>{/*<img style={{height: 25, width: 25}} alt='smile' src={gificon}/>*/}
+						{/*GIFOVI
+					</Button>*/}
 
 				</Container>
 			</div>
