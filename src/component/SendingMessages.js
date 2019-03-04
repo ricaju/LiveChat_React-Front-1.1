@@ -83,7 +83,6 @@ const addMessageMutation= gql`
   mutation addMessage($text: String!, $chatroomId: String!,$token: String!) {
     addMessage(text: $text, chatroomId: $chatroomId, token: $token) {
     	text
-
     }
   }
 `;
