@@ -5,6 +5,15 @@ import Login from '../Login';
 import Registration from '../Registration';
 import Logo from '../Logo/Logo.js';
 import { Container, Row, Col, Button } from 'reactstrap';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+
+
+const validToken = gql`
+  mutation validToken($token: String!) {
+    validToken(token : $token)
+  }
+`;
 
 class HomePage extends Component {
   constructor(props) {
@@ -32,6 +41,25 @@ class HomePage extends Component {
   handleTriger = () => {
     this.setState({ redirect: true }, () => this.props.history.push('/ChatContainerALL'))
   }
+
+  handleResponse = async () => {
+    const check_token = localStorage.getItem('jwt')
+    if (check_token) {
+      const token = JSON.parse(check_token)
+      const response = await this.props.mutate({
+        variables: {
+          token: token.data.register || token.data.login
+          }
+        });
+        if(JSON.stringify(response) === '{"data":{"validToken":"True"}}'){
+            this.handleTriger();
+        }
+  }}
+
+  componentWillMount(){     //ili DidMount?
+    this.handleResponse();
+  }
+
 
   render() {
     const particleOptions= {
@@ -72,4 +100,4 @@ class HomePage extends Component {
   }
 }
 
-export default withRouter(HomePage);
+export default graphql(validToken) (withRouter(HomePage));

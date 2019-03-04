@@ -5,17 +5,18 @@ import messagesicon from './messagesicon.png';
 import sportsicon from './sportsicon.png';
 import techicon from './techicon.png';
 import travelicon from './travelicon.png';
-import PrivateMessages from './PrivateMessages';
 import logouticon from './logouticon.png';
 import '../ChatContainerALL.css';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
-import {PrivateRoute} from '../PrivateRoute';
-import EditProfile from '../EditProfile';
-import { withRouter } from 'react-router-dom';
+import {withRouter} from "react-router-dom";
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
-
-
+const logoutMutation = gql`
+  mutation logout($logged_token: String!) {
+    logout(logged_token: $logged_token)
+  }
+`;
 
 class Sidebar extends Component {
 	constructor(props) {
@@ -25,7 +26,8 @@ class Sidebar extends Component {
     this.state = {
       dropdownOpen: false,
       editProfile: false,
-      logout: false
+			logout: false,
+			logged_token: JSON.parse(localStorage.getItem('jwt'))
     };
   }
 
@@ -39,14 +41,20 @@ class Sidebar extends Component {
   	this.setState({ editProfile: true }, () => this.props.history.push('/EditProfile'))
   }
 
-  handleLogout = () => {
+  handleLogout = async () => {
+		var logout_token = await this.props.mutate( {
+			variables: {
+				logged_token: this.state.logged_token.data.register || this.state.logged_token.data.login
+				}
+			}
+		)
+		localStorage.setItem('jwt', JSON.stringify(logout_token))
   	this.setState({ logout: true }, () => this.props.history.push('/'))
   }
 
-
-
 render() {
-	return(		
+	return(	
+	<>	
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
@@ -68,16 +76,16 @@ render() {
 						    SETTINGS
 						  </DropdownToggle>
 						  <DropdownMenu>
-						    <DropdownItem onClick={this.hnadleEditProfile} >Edit profile</DropdownItem>
+						    <DropdownItem onClick={this.handleEditProfile} >Edit profile</DropdownItem>
 						    <DropdownItem onClick={this.handleLogout}>LOGOUT</DropdownItem>
 						  </DropdownMenu>
 						</ButtonDropdown>
 				</ButtonGroup>
 			</div>
 	    </div>	
+	</>
 	);
 }
 }
   
-
-export default withRouter(Sidebar);
+export default graphql(logoutMutation)(withRouter(Sidebar))
