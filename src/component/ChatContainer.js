@@ -5,21 +5,14 @@ import { Container } from 'reactstrap';
 
 class ChatContainer extends Component {
 	render() {
-		//const chatHistory = this.props.AllChatsQuery.chatHistory || []  // storing chat history in "chatHistory" or empty string (if there's no chat)
 		return(
 			<div className="d-flex">
 				<Container className=" p-3" >
 					<div>
 						<MessageList/>
-					 	{/*{chatHistory.map(message => (                          //looping through chatHistory and showing it in ChatBox component
-							<ChatBox key={message.id} message={message} />
-						))}*/}
 					</div>
-				</Container>
-			</div>
-
-
-
+					</Container>
+				</div>
 			);
 	}
 }
