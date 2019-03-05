@@ -21,7 +21,7 @@ class ChatContainerALL extends Component {
 		this.setState({
 			chatRoom: value
 		})
-		console.log(value)
+		console.log(this.state.chatRoom)
 	}  
 
 	handleToggle = () => {
