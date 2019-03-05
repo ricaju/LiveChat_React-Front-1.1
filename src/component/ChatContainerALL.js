@@ -18,11 +18,10 @@ class ChatContainerALL extends Component {
 	  }
 
 	handleChatRoom = async (value) => {
-		value.preventDefault();
 		this.setState({
 			chatRoom: value
 		})
-		console.log(this.state.chatRoom)
+		console.log(value)
 	}  
 
 	handleToggle = () => {
