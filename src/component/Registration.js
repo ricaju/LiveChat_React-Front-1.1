@@ -36,7 +36,8 @@ class Registration extends Component {
   		confirmPasswordValid = "Password and confirm password don't match!";
   	}
  	if (usernameValid || passwordValid || confirmPasswordValid || emailValid) {   //setstejtanje upozorenja
- 		this.setState({ usernameValid, passwordValid, confirmPasswordValid, emailValid });
+     this.setState({ usernameValid, passwordValid, confirmPasswordValid, emailValid });
+     return false;
  	}
   else {
     this.setState({ usernameValid, passwordValid, confirmPasswordValid, emailValid });
@@ -132,10 +133,6 @@ class Registration extends Component {
             </Form>
 
           </div>
-        
-
-      /*</div>
-      </div>*/
     );
   }
 }
