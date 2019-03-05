@@ -22,47 +22,45 @@ class EditProfile extends Component {
     }
   }
 
-  handleChange = (e) => {
-  this.setState({ [e.target.name]: e.target.value })
+handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
   };
 
   checkValid = () => {
-  let usernameValid = "";
-  let newUsernameValid = "";
-  let passwordValid = "";
-  let newPasswordValid = "";
+    let usernameValid = "";
+    let newUsernameValid = "";
+    let passwordValid = "";
+    let newPasswordValid = "";
 
-  if (!this.state.newUsername && !this.state.newPassword){
-    newUsernameValid = "You are not changing your username";
-    newPasswordValid = "You are not changin your password";
-  }
-  if (this.state.newUsername && !this.state.username) {
-    usernameValid = "Enter your username";
-  }
-  if (this.state.newPassword && !this.state.password) {
-    passwordValid = "Enter your password";
-  }
-  if (this.state.newPassword && this.state.password) {
-     if(this.state.newPassword.length < 5) {
-      newPasswordValid = "Password needs to have more than 5 characters";
+    if (!this.state.newUsername && !this.state.newPassword){
+      newUsernameValid = "You are not changing your username";
+      newPasswordValid = "You are not changin your password";
+    }
+    if (this.state.newUsername && !this.state.username) {
+      usernameValid = "Enter your username";
+    }
+    if (this.state.newPassword && !this.state.password) {
+      passwordValid = "Enter your password";
+    }
+    if (this.state.newPassword && this.state.password) {
+      if(this.state.newPassword.length < 5) {
+        newPasswordValid = "Password needs to have more than 5 characters";
       }
-  }
-  if (usernameValid || newUsernameValid || passwordValid || newPasswordValid) {   
-    this.setState({ usernameValid, newUsernameValid, passwordValid, newPasswordValid });
-    return false;
-  }
-  else {
+    }
+    if (usernameValid || newUsernameValid || passwordValid || newPasswordValid) {   
+      this.setState({ usernameValid, newUsernameValid, passwordValid, newPasswordValid });
+      return false;
+    }
+    else {
       this.setState({ usernameValid, newUsernameValid, passwordValid, newPasswordValid });
       return true;
     }
 }
 
-
-
   handleSubmit = async (e) => {    
     e.preventDefault();
-    const check = await this.checkValid();    
-    if(!check) {  
+    const check = await this.checkValid();
+    if(!check) {
     }
     else {
       const getToken = JSON.parse(localStorage.getItem('jwt'))
@@ -164,12 +162,10 @@ class EditProfile extends Component {
                   id="button"                   
                   >Submit</Button>
             </Form>
-
           </div>
     </>
     )
   }
-
 } 
 
 const updateUserMutation = gql`

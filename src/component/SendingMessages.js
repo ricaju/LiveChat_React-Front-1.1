@@ -12,7 +12,7 @@ class SendingMessages extends Component {
 		super(props);
 		this.state = {
 			text: "",
-			chatroomId: '1'
+			chatroomId: "1"
 			//UserId:
 		}
 	}
@@ -83,7 +83,6 @@ const addMessageMutation= gql`
   mutation addMessage($text: String!, $chatroomId: String!,$token: String!) {
     addMessage(text: $text, chatroomId: $chatroomId, token: $token) {
     	text
-
     }
   }
 `;

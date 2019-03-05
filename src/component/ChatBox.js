@@ -5,7 +5,7 @@ import './ChatBox.css';
 
 
 const messageAddedSubscription = gql`
-    subscription($chatroomId: String){
+    subscription($chatroomId: String!){
     messageAdded(chatroomId: $chatroomId ) {
     	id 
     	username
@@ -58,6 +58,9 @@ const MessageList = () => (
       if (error) return <p>Error: {error.message}</p>;
       const more = () => subscribeToMore({
         document: messageAddedSubscription,
+        variables: {
+          chatroomId: chatroomId,
+        },
         updateQuery: (prev, { subscriptionData }) => {
           if (!subscriptionData.data) return prev;
           return Object.assign({}, prev, {

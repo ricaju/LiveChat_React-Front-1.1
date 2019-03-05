@@ -18,7 +18,6 @@ const logoutMutation = gql`
   }
 `;
 
-
 class Sidebar extends Component {
 	constructor(props) {
     super(props);
@@ -27,8 +26,8 @@ class Sidebar extends Component {
     this.state = {
       dropdownOpen: false,
       editProfile: false,
-      logout: false,
-      logged_token: JSON.parse(localStorage.getItem('jwt')),
+			logout: false,
+			logged_token: JSON.parse(localStorage.getItem('jwt'))
     };
   }
 
@@ -52,9 +51,6 @@ class Sidebar extends Component {
 		localStorage.setItem('jwt', JSON.stringify(logout_token))
   	this.setState({ logout: true }, () => this.props.history.push('/'))
   }
-
-
-
 
 render() {
 	return(	
@@ -91,6 +87,5 @@ render() {
 	);
 }
 }
-  
 
 export default graphql(logoutMutation)(withRouter(Sidebar));

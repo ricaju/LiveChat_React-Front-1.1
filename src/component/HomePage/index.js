@@ -59,8 +59,6 @@ class HomePage extends Component {
     this.handleResponse();
   }
 
-
-
   render() {
     const particleOptions= {
       particles: {
