@@ -5,36 +5,34 @@ import SendingMessages from './SendingMessages';
 import './ChatContainerALL.css';
 import MessageList from './ChatBox';
 
-
-
 class ChatContainerALL extends Component {
 
 	constructor(props) {
 	    super(props);
 	    this.state = {
-	      toggle: true,
-	      chatRoom: "1"
+	      toggle: false,
+	      chatroomId: "1"
 	    }
 	  }
 
 	handleChatRoom = async (value) => {
 		this.setState({
-			chatRoom: value
+			chatroomId: value
 		})
-		console.log(this.state.chatRoom)
+		console.log(this.state.chatroomId)
 	}  
 
 	handleToggle = () => {
 		if(!this.state.toggle){
 			this.setState({
 				toggle: true
-			})}
+			})
+		}
 		else{
 			this.setState({
-				toggle: false,
-			
-		})
-	}
+				toggle: false,		
+			})
+		}
 	}
 
 
@@ -44,14 +42,20 @@ class ChatContainerALL extends Component {
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar ChangingRoom={this.handleChatRoom} Hide={this.handleToggle}/> </aside>
 						{this.state.toggle ?
-	  					<aside className="aside aside-2" >Toggle private messages</aside> : null}
+	  					<aside className="aside aside-2" >Toggle private messages
+	  							<p>blaglad</p>
+	  							<p>blaglad</p>
+	  							<p>blaglad</p>
+	  							<p>blaglad</p>
+	  							<p>blaglad</p>
+	  					</aside> : null}
   					</div>
   					<div className='columns'>
 	  					<div className="container1">
-	  						<MessageList/>
+	  						<MessageList chatroomId = {this.state.chatroomId}/>
 						</div>
 						<div className='container2'>
-							<SendingMessages/>
+							<SendingMessages chatroomId = {this.state.chatroomId}/>
 						</div>
 					</div>
 
@@ -60,4 +64,4 @@ class ChatContainerALL extends Component {
 		}
 	}
 
-export default ChatContainerALL;   
+export default ChatContainerALL;  
