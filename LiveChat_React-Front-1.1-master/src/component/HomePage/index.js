@@ -9,7 +9,6 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import '../Login.css';
 
-
 const validToken = gql`
   mutation validToken($token: String!) {
     validToken(token : $token)
@@ -44,23 +43,29 @@ class HomePage extends Component {
   }
 
   handleResponse = async () => {
-    const check_token = localStorage.getItem('jwt')
-    if (check_token) {
-      const token = JSON.parse(check_token)
-      const response = await this.props.mutate({
-        variables: {
-          token: token.data.register || token.data.login
-          }
-        });
-        if(JSON.stringify(response) === '{"data":{"validToken":"True"}}'){
-            this.handleTriger();
+  const check_token = localStorage.getItem('jwt')
+  if (check_token) {
+    const token = JSON.parse(check_token)
+    const response = await this.props.mutate({
+       variables: {
+        token: token.data.register || token.data.login || token.data.logout
         }
-  }}
+      });
+      if(response.data.validToken === "True"){
+          this.handleTriger();
+      }
+      else {
+        this.setState({ redirect: false }, () => this.props.history.push('/'))
+      }
+  }
+  else {
+    this.setState({ redirect: false }, () => this.props.history.push('/'))
+  }
+}
 
   componentWillMount(){     //ili DidMount?
     this.handleResponse();
   }
-
 
   render() {
     const particleOptions= {
@@ -84,10 +89,10 @@ class HomePage extends Component {
         <Container>
           <Row>
             <Col xs="6" className='left'><Logo /></Col>
-            <Col xs="6"  >
+            <Col xs="6" >
               <Row className="red">
                 <Col>
-                <ButtonGroup md= 'auto' className="positionOfButtons"> {/*css is in login.css*/}
+                  <ButtonGroup md= 'auto' className="positionOfButtons"> {/*css is in login.css*/}
                   <Button  id='login' onClick={this.handeLog}>Login</Button>
                   <Button  id='registration' onClick={this.handleReg}>Register</Button>
                   </ButtonGroup>

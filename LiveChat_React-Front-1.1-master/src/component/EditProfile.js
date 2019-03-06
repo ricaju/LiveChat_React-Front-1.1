@@ -5,7 +5,7 @@ import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import './EditProfile.css';
-
+import gificon from './gificon.png';
 
 class EditProfile extends Component {
   constructor(props){
@@ -23,10 +23,9 @@ class EditProfile extends Component {
     }
   }
 
-  handleGoBack = () => {
+   handleGoBack = () => {
     this.setState({ ChatContainerALL: true }, () => this.props.history.push('/ChatContainerALL'))
   }
-
 
 handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -40,7 +39,7 @@ handleChange = (e) => {
 
     if (!this.state.newUsername && !this.state.newPassword){
       newUsernameValid = "You are not changing your username";
-      newPasswordValid = "You are not changing your password";
+      newPasswordValid = "You are not changin your password";
     }
     if (this.state.newUsername && !this.state.username) {
       usernameValid = "Enter your username";
@@ -82,7 +81,7 @@ handleChange = (e) => {
         },
       });
 
-      if (edit_profile.data.updateUser === "Username already taken") {
+     if (edit_profile.data.updateUser === "Username already taken") {
         var newUsernameValid = 'Username already taken';
         this.setState({ newUsernameValid })
       }
@@ -108,14 +107,17 @@ handleChange = (e) => {
         },
         "color": {
           "value": "random",
+          type: 'images',
+                          
         },
       },
     };
     
   return(
     <>
-      <Particles className='particles' params={particleOptions} />
-      <Button onClick={this.handleGoBack}>BACK</Button>
+       <Particles className='particles' params={particleOptions} />
+       
+      <Button className='backButton' onClick={this.handleGoBack}>BACK</Button>
       <div className=" col-md-4   " id='formShape'>
             <Form onSubmit={e => this.handleSubmit(e)} >
                 <FormGroup>
@@ -171,7 +173,6 @@ handleChange = (e) => {
             </Form>
 
           </div>
-
     </>
     )
   }

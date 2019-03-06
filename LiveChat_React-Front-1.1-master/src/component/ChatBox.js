@@ -5,7 +5,7 @@ import './ChatBox.css';
 
 
 const messageAddedSubscription = gql`
-    subscription($chatroomId: String){
+    subscription($chatroomId: String!){
     messageAdded(chatroomId: $chatroomId ) {
     	id 
     	username
@@ -16,23 +16,21 @@ const messageAddedSubscription = gql`
 `; 
 
 const messagesQuery = gql` 
-	query($chatroomId: String){
+	query messages($chatroomId: String!){
 	messages(chatroomId: $chatroomId) {
 		id
 		username
 		text
 		createdAt
-
 	}
 }
 `;
 
-//({new Date(message.createdAt).toLocaleString()})
 
 const MessageItem = ({ message }) => (
   <li className='listItems'>
-    <span className='userName'>{message.username}: </span> +  
-    {' '}
+    <span className='userName'>{message.username}: </span>
+    <span className='spaceBetween'>+{''}+</span>
      <span className='messages'> {message.text} </span> 
     
   </li>
@@ -45,20 +43,23 @@ const MessageListView = class extends Component {
   render() {
     const { data } = this.props;
     return (
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
+      <ul style={{ listStyleType: 'none', padding: 5 }}>
       {data.messages.map(message => <MessageItem key={message.id} message={message} />)}
       </ul>
     );
   }
 };
 
-const MessageList = () => (
-  <Query query={messagesQuery}>
+const MessageList = (chatroomId) => (
+  <Query query={messagesQuery} variables={{chatroomId: chatroomId.chatroomId}}>
     {({ loading, error, data, subscribeToMore }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error: {error.message}</p>;
       const more = () => subscribeToMore({
         document: messageAddedSubscription,
+        variables: {
+          chatroomId: chatroomId.chatroomId,
+        },
         updateQuery: (prev, { subscriptionData }) => {
           if (!subscriptionData.data) return prev;
           return Object.assign({}, prev, {

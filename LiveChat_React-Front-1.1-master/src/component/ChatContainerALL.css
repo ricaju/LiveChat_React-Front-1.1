@@ -3,7 +3,7 @@
   display: flex;  
  /* flex-flow: flex wrap;*/
   font-weight: bold;
-  text-align: left;
+  /*text-align: left;*/
   
 }
 .wrapper > * {
@@ -25,7 +25,7 @@
 }
 
 .aside-2 {
-  background: #0B0C10;
+  background: #1F2833;
   border: solid 1px #45A29E;
   height: 100vh;
   width: 300px;
@@ -39,16 +39,16 @@
   flex: 2;
 }
 .container1 {
-    background: #1F2833;
+    background: #0B0C10;
     height: 70vh;
     border: solid 2px #45A29E;
-    overflow-y: scroll;
-
+   
+   
 }
 
 
 .container2{
-  background: #1F2833;
+  background: #0B0C10 ;
   height: 30vh;
   border: solid 1px #45A29E;
 }
@@ -56,38 +56,52 @@
 /*#button1{
   background: #45A29E;
   border: solid 2px #66FCF1;
-}
-
+}*/
 #button1:hover{
   background: #66FCF1;
 }
-#button2{
+/*#button2{
   background: #45A29E;
   border: solid 1px #66FCF1;
 }
-
 #button3{
   background: #45A29E;
   border: solid 2px #66FCF1;
 }
-
 #button4{
   background: #45A29E;
   border: solid 2px #66FCF1;
 }*/
 
    .Buttoni {
-     width: 105px;
-     height: 20vh;
+     
+     height: 16.7vh;
+     background: #45A29E;
+      border-bottom:solid 1px #66FCF1;
+    }
+
+    .Buttoni:hover{
+
     }
   .imgbuttoni{
     width: 90px;
     height: 90px;
+    
    
   }
 
   .name-of-button{
-    text-align: center;
+   margin-right: 5px;
+    color: black;
+    font-weight: bold;    
+    font-size: 15px; 
+
+  }
+  .name-of-button-1{
+    display: block;
+     color: black;
+    font-weight: bold;    
+    font-size: 15px;    
   }
 
   .aside-1 { flex: 0.5 0 0; }
@@ -103,14 +117,24 @@
    .Buttoni {
     font-size: 10px;
      width: 60px;
-     height: 20vh;
+     height: 16.7vh;
     }
   .imgbuttoni{
     width: 40px;
     height: 40px;
   }
-  .aside-1 { flex: 0.5 0 0; }
-  .aside-2 { flex: 1.2 0 0; }
+
+  .aside-1 {  height: 100vh; }
+  .aside-2 {  height: 100vh; }
+
+  .container1 { 
+    height: 70vh;
+    width: 100%;
+  }
+  .container2 { 
+    height: 30vh;
+    width: 100%;
+   }
 }
 
 .text-list {

@@ -6,6 +6,7 @@ import sportsicon from './sportsicon.png';
 import techicon from './techicon.png';
 import travelicon from './travelicon.png';
 import logouticon from './logouticon.png';
+import mainchat from './mainchat.png';
 import '../ChatContainerALL.css';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import {withRouter} from "react-router-dom";
@@ -21,13 +22,11 @@ const logoutMutation = gql`
 class Sidebar extends Component {
 	constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false,
       editProfile: false,
 			logout: false,
-			logged_token: JSON.parse(localStorage.getItem('jwt'))
     };
   }
 
@@ -41,10 +40,11 @@ class Sidebar extends Component {
   	this.setState({ editProfile: true }, () => this.props.history.push('/EditProfile'))
   }
 
-  handleLogout = async () => {
+	handleLogout = async () => {
+		const logged_token = JSON.parse(localStorage.getItem('jwt'));
 		var logout_token = await this.props.mutate( {
 			variables: {
-				logged_token: this.state.logged_token.data.register || this.state.logged_token.data.login
+				logged_token: logged_token.data.register || logged_token.data.login
 				}
 			}
 		)
@@ -58,22 +58,26 @@ render() {
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
-				  <Button className="Buttoni" color="success" onClick={this.props.Hide}>
+				  <Button className="Buttoni" onClick={this.props.Hide}>
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
-				  			<span className='name-of-button'>PRIVATE MESSAGES</span>
+				  			<span className='name-of-button-1'>PRIVATE MESSAGES</span>
 				  	</Button>
-					<Button className="Buttoni" color="warning"><img className='imgbuttoni' alt='travel' src={travelicon}/>
-						TRAVEL
+				  	<Button className="Buttoni">
+				  	<img className='imgbuttoni' alt='mainchat' src={mainchat}  onClick={()=>this.props.ChangingRoom("1")}/>
+				  	<span className='name-of-button-1'>MAIN CHAT</span>
+				  	</Button>
+					<Button className="Buttoni" ><img className='imgbuttoni' alt='travel' src={travelicon}  onClick={()=>this.props.ChangingRoom("2")}/>
+						<span className='name-of-button'>{' '}TRAVEL</span>
 					</Button>
-				    <Button className="Buttoni" color="info"><img className='imgbuttoni' alt='sportsicon' src={sportsicon}/>
-				    	SPORT
+				    <Button className="Buttoni" ><img className='imgbuttoni' alt='sportsicon' src={sportsicon} onClick={()=>this.props.ChangingRoom("3")}/>
+				    <span className='name-of-button'>SPORT</span>
 				    </Button>
-					<Button className="Buttoni" color="danger"><img className='imgbuttoni' alt='techicon' src={techicon}/>
-						TECH
+					<Button className="Buttoni" ><img className='imgbuttoni' alt='techicon' src={techicon}  onClick={()=>this.props.ChangingRoom("4")}/>
+						<span className='name-of-button'>TECH</span>
 					</Button>
-					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni" color="primary">
-						  <DropdownToggle caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
-						    SETTINGS
+					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni">
+						  <DropdownToggle className="Buttoni" caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
+						   <span className='name-of-button'>SETTINGS</span>
 						  </DropdownToggle>
 						  <DropdownMenu>
 						    <DropdownItem onClick={this.handleEditProfile} >Edit profile</DropdownItem>
@@ -87,5 +91,5 @@ render() {
 	);
 }
 }
-  
-export default graphql(logoutMutation)(withRouter(Sidebar))
+
+export default graphql(logoutMutation)(withRouter(Sidebar));
