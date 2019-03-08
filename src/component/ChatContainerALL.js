@@ -18,6 +18,8 @@ class ChatContainerALL extends Component {
 	handleChatRoom = async (value) => {
 		this.setState({
 			chatroomId: value
+		},() => {
+			console.log("pero");
 		})
 		console.log(this.state.chatroomId)
 	}  

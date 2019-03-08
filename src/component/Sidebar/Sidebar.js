@@ -25,8 +25,8 @@ class Sidebar extends Component {
     this.state = {
       dropdownOpen: false,
       editProfile: false,
-			logout: false,
-			logged_token: JSON.parse(localStorage.getItem('jwt'))
+	  logout: false,
+	  logged_token: JSON.parse(localStorage.getItem('jwt'))
     };
   }
 
@@ -59,7 +59,7 @@ render() {
 			<ButtonGroup vertical>
 				  <Button className="Buttoni" color="success" onClick={this.props.Hide}>
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
-				  			PRIVATE MESSAGES
+				  				PRIVATE MESSAGES
 				  	</Button>
 					<Button className="Buttoni" color="warning"><img className='imgbuttoni' alt='travel' src={travelicon}  onClick={(value) => this.props.ChangingRoom("2")}/>
 						TRAVEL
