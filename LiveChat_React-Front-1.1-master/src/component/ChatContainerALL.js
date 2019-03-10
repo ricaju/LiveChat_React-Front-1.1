@@ -78,14 +78,14 @@ class ChatContainerALL extends Component {
 			<div className="wrapper">
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar ChangingRoom={this.handleChatRoom} Hide={this.handleToggle}/> </aside>
-						{this.state.toggle ?
+						{/*{this.state.toggle ?
 	  					<aside className="aside aside-2" >Toggle private messages
 	  							<p>blaglad</p>
 	  							<p>blaglad</p>
 	  							<p>blaglad</p>
 	  							<p>blaglad</p>
 	  							<p>blaglad</p>
-	  					</aside> : null}
+	  					</aside> : null}*/}
   					</div>
   					<div className='columns'>
 	  					<div className="container1">

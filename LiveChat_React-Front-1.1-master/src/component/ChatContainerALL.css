@@ -24,7 +24,7 @@
   
 }
 
-.aside-2 {
+/*.aside-2 {
   background: #1F2833;
   border: solid 1px #45A29E;
   height: 100vh;
@@ -32,7 +32,7 @@
  padding-left: 10px;
  color: white;
 
-}
+}*/
 .columns{
   flex-direction: column;
   display: flex;  
@@ -41,9 +41,7 @@
 .container1 {
     background: #0B0C10;
     height: 70vh;
-    border: solid 2px #45A29E;
-   
-   
+    border: solid 2px #45A29E;   
 }
 
 
@@ -74,22 +72,28 @@
 }*/
 
    .Buttoni {
-     
-     height: 16.7vh;
+     color:black;
+     height: 20vh;
      background: #45A29E;
       border-bottom:solid 1px #66FCF1;
     }
 
     .Buttoni:hover{
+      color: black;
+      background: #66FCF1;
+    }
 
+    .Buttoni:focus{
+      background: #66FCF1;
     }
   .imgbuttoni{
     width: 90px;
-    height: 90px;
-    
-   
+    height: 90px;  
   }
-
+  .pop-out-button{
+    background: #45A29E;
+    
+  }
   .name-of-button{
    margin-right: 5px;
     color: black;
@@ -105,13 +109,13 @@
   }
 
   .aside-1 { flex: 0.5 0 0; }
-  .aside-2 { flex: 1.2 0 0; }
+ /* .aside-2 { flex: 1.2 0 0; }*/
 
 .container1    { flex: 2 0px; }
   .aside-1 { order: 1; } 
-  .aside-2   { order: 2; }
-  .container1 { order: 3; }
-  .container2 { order: 4; }
+  /*.aside-2   { order: 2; }*/
+  .container1 { order: 2; }
+  .container2 { order: 3; }
 
 @media screen and (max-width: 450px) {
    .Buttoni {
@@ -125,7 +129,7 @@
   }
 
   .aside-1 {  height: 100vh; }
-  .aside-2 {  height: 100vh; }
+ /* .aside-2 {  height: 100vh; }*/
 
   .container1 { 
     height: 70vh;

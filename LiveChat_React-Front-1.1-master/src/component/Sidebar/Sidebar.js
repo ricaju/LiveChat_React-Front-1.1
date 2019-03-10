@@ -58,10 +58,10 @@ render() {
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
-				  <Button className="Buttoni" onClick={this.props.Hide}>
+				{ /* <Button className="Buttoni" onClick={this.props.Hide}>
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
 				  			<span className='name-of-button-1'>PRIVATE MESSAGES</span>
-				  	</Button>
+				  	</Button>*/}
 				  	<Button className="Buttoni">
 				  	<img className='imgbuttoni' alt='mainchat' src={mainchat}  onClick={()=>this.props.ChangingRoom("1")}/>
 				  	<span className='name-of-button-1'>MAIN CHAT</span>
@@ -79,7 +79,7 @@ render() {
 						  <DropdownToggle className="Buttoni" caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
 						   <span className='name-of-button'>SETTINGS</span>
 						  </DropdownToggle>
-						  <DropdownMenu>
+						  <DropdownMenu className='pop-out-button'>
 						    <DropdownItem onClick={this.handleEditProfile} >Edit profile</DropdownItem>
 						    <DropdownItem onClick={this.handleLogout}>LOGOUT</DropdownItem>
 						  </DropdownMenu>

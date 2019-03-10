@@ -30,7 +30,7 @@ const messagesQuery = gql`
 const MessageItem = ({ message }) => (
   <li className='listItems'>
     <span className='userName'>{message.username}: </span>
-    <span className='spaceBetween'>+{''}+</span>
+    <span className='spaceBetween'>&nbsp;&nbsp;&nbsp;</span>
      <span className='messages'> {message.text} </span> 
     
   </li>
