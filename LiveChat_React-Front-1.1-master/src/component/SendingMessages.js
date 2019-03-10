@@ -12,6 +12,7 @@ class SendingMessages extends Component {
 		super(props);
 		this.state = {
 			text: "",
+			
 			//UserId:
 		}
 	}
@@ -25,7 +26,8 @@ class SendingMessages extends Component {
 			variables: {
 				text: this.state.text, 
 				chatroomId: this.props.chatroomId,
-				token: token
+				token: token,
+				
 				}
 		});
 		this.setState({ text: "" })
@@ -41,7 +43,7 @@ class SendingMessages extends Component {
 	render() {
 		return(
 			<div className="d-flex">
-				<Container className="p-2 m col-10">
+				<Container className="p-3 m col-10">
 					<Form>
 						<Input
 							type="textarea"
@@ -83,9 +85,10 @@ class SendingMessages extends Component {
 }
 
 const addMessageMutation= gql` 
-  mutation addMessage($text: String!, $chatroomId: String!,$token: String!) {
-    addMessage(text: $text, chatroomId: $chatroomId, token: $token) {
-    	text
+  mutation addMessage($text: String!, $chatroomId: String!, $token: String!) {
+    addMessage(text: $text, chatroomId: $chatroomId, token: $token ) {
+		text
+		
     }
   }
 `;

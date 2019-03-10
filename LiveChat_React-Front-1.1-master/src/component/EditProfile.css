@@ -35,7 +35,7 @@
 }
  .backButton{
  	background-color: transparent;
-	border: 2px solid #45A29E;	
+	border: transparent!important;
 	color: #66FCF1;
 	font-weight: bold;
 	font-size: 20px;	
@@ -48,9 +48,9 @@
  }
 
  .backButton:hover{
- 	background-color: #1F2833;
-	color: #66FCF1;
-	border: 2px solid #66FCF1;
+ 	background: transparent!important;
+	color: #45A29E;
+	border: transparent!important;
 	font-weight: bold;
 	font-size: 20px;	
  }

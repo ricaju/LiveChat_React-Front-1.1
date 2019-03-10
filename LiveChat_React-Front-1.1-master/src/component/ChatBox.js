@@ -32,6 +32,8 @@ const MessageItem = ({ message }) => (
     <span className='userName'>{message.username}: </span>
     <span className='spaceBetween'>&nbsp;&nbsp;&nbsp;</span>
      <span className='messages'> {message.text} </span> 
+     <span className='spaceBetween'>&nbsp;&nbsp;&nbsp;</span>
+     <span className='createdAt'> {message.createdAt} </span> 
     
   </li>
 );

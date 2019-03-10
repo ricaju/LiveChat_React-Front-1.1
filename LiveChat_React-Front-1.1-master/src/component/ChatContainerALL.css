@@ -70,7 +70,9 @@
   background: #45A29E;
   border: solid 2px #66FCF1;
 }*/
-
+  .messageArea{
+    overflow-y: scroll;
+  }
    .Buttoni {
      color:black;
      height: 16.7vh;

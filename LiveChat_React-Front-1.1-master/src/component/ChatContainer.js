@@ -8,8 +8,8 @@ import './ChatContainerALL.css';
 class ChatContainer extends Component {
 	render() {
 		return(
-			<div className="d-flex" >
-				<Container >
+			<div className="d-flex messageArea" >
+				<Container  >
 					<div className="text-list " >
 						<MessageList/>
 					</div>

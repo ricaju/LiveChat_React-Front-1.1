@@ -7,11 +7,17 @@
 .userName {
 	color: #45A29E;
 	text-transform: uppercase;
+	font-family: 'Montserrat Subrayada', sans-serif;
 }
 
 .messages{
 	color: white;
+	font-family: 'Encode Sans Semi Expanded', sans-serif;
 }
 .spaceBetween{
 	color: transparent;
+}
+.createdAt{
+ 	font-size: 15px;
+ 	padding: 2px;
 }

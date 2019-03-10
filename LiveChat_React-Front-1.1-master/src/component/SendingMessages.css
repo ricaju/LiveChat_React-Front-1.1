@@ -23,12 +23,13 @@
 	margin-top: 100%;
 	margin-left: 100%;
 	background: transparent;
-	border: solid 1px #45A29E;
+	border: solid 1px #66FCF1;
 	
 }
 #btn1:hover {
-	background: #45A29E;
-	border: solid 1px #45A29E;
+	background: #66FCF1;
+	border: solid 1px #66FCF1;
+	color: #45A29E;
 }
 
 /*#btn2 {
