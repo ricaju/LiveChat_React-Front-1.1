@@ -2,12 +2,12 @@
 
 #formShape{
 	padding-top: 5vh;
-	height:  70vh;
+	height:  100vh;
 	width: auto;
-	background-color: rgba(69, 162, 158, 0.8);
+	background-color: rgba(69, 162, 158, 0.6);
 	display: flex;
 	justify-content: center;
-	margin-top: 10vh;
+	
 	font-weight: bold;
 	color: white;
 	margin-left: auto;
@@ -40,6 +40,10 @@
 	color: #66FCF1;
 	font-weight: bold;
 	font-size: 20px;	
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px;
  }
 
  .backButton:hover{
@@ -48,4 +52,11 @@
 	color: #45A29E;
 	font-weight: bold;
 	font-size: 20px;	
+ }
+
+ .changingImage{
+ 	margin: 20px;
+ }
+ #photo{
+ 	display: flex;
  }

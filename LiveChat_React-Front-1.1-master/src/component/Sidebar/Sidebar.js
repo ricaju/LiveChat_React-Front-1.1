@@ -62,22 +62,21 @@ render() {
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
 				  			<span className='name-of-button-1'>PRIVATE MESSAGES</span>
 				  	</Button>*/}
-				  	<Button className="Buttoni">
-				  	<img className='imgbuttoni' alt='mainchat' src={mainchat}  onClick={()=>this.props.ChangingRoom("1")}/>
-				  	<span className='name-of-button-1'>MAIN CHAT</span>
+				  	<Button onClick={()=>this.props.ChangingRoom("1")} className="Buttoni">
+				  	<img className='imgbuttoni' alt='mainchat' src={mainchat}  />
+				  
 				  	</Button>
-					<Button className="Buttoni" ><img className='imgbuttoni' alt='travel' src={travelicon}  onClick={()=>this.props.ChangingRoom("2")}/>
-						<span className='name-of-button'>{' '}TRAVEL</span>
+					<Button  onClick={()=>this.props.ChangingRoom("2")} className="Buttoni" ><img className='imgbuttoni' alt='travel' src={travelicon} />
+						
 					</Button>
-				    <Button className="Buttoni" ><img className='imgbuttoni' alt='sportsicon' src={sportsicon} onClick={()=>this.props.ChangingRoom("3")}/>
-				    <span className='name-of-button'>SPORT</span>
+				    <Button onClick={()=>this.props.ChangingRoom("3")} className="Buttoni" ><img className='imgbuttoni' alt='sportsicon' src={sportsicon} />
+				    
 				    </Button>
-					<Button className="Buttoni" ><img className='imgbuttoni' alt='techicon' src={techicon}  onClick={()=>this.props.ChangingRoom("4")}/>
-						<span className='name-of-button'>TECH</span>
+					<Button onClick={()=>this.props.ChangingRoom("4")} className="Buttoni" ><img className='imgbuttoni' alt='techicon' src={techicon}  />
+						
 					</Button>
 					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni">
-						  <DropdownToggle className="Buttoni" caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
-						   <span className='name-of-button'>SETTINGS</span>
+						  <DropdownToggle className="Buttoni" caret><img className='imgbuttoni' alt='logout' src={logouticon}/>						  
 						  </DropdownToggle>
 						  <DropdownMenu className='pop-out-button'>
 						    <DropdownItem onClick={this.handleEditProfile} >Edit profile</DropdownItem>

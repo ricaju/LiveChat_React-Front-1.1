@@ -6,6 +6,10 @@ import './ChatContainerALL.css';
 import MessageList from './ChatBox';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import main from './main.png';
+import sport from './sport.png';
+import comp from './comp.png';
+import travel from './travel.png';
 
 const validToken = gql`
   mutation validToken($token: String!) {
@@ -20,9 +24,26 @@ class ChatContainerALL extends Component {
 	    this.state = {
 				toggle: true,
 				redirect: true,
-				chatroomId: "1"
+				chatroomId: "1",
+				background: ''
 			}
 	  }
+
+	/*onChange(chatroomId) {
+    if (chatroomId === '1') {
+      this.setState({background: 'main'}) // here I want to change the color to red
+    } else if (chatroomId === '2'){
+    	this.setState({background: 'travel' })
+    }
+    else if (chatroomId === '3'){
+    	this.setState({background: 'sport' })
+    }
+    else if(chatroomId === '4'){
+    	this.setState({background: 'comp' })
+   
+  }*/
+ 	
+
 
 	handleChatRoom = (value) => {
 		  this.setState({
@@ -30,6 +51,8 @@ class ChatContainerALL extends Component {
 		})
 		console.log(value)		
 	}  
+
+	
 
 	handleToggle = () => {
 		if(!this.state.toggle){

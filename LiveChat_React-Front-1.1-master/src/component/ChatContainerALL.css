@@ -14,7 +14,7 @@
   flex-direction: row;
   display: flex;
   min-width: 1;
-  flex: 0.3;
+  flex: 0.2;
 }
 .aside-1 {
   background: #1F2833;
@@ -87,8 +87,8 @@
       background: #66FCF1;
     }
   .imgbuttoni{
-    width: 90px;
-    height: 90px;  
+    width: 120px;
+    height: 120px;  
   }
   .pop-out-button{
     background: #45A29E;
