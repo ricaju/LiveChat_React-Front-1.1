@@ -24,24 +24,12 @@ class ChatContainerALL extends Component {
 	    this.state = {
 				toggle: true,
 				redirect: true,
-				chatroomId: "1",
-				background: ''
+				chatroomId: "1"
+				
 			}
 	  }
 
-	/*onChange(chatroomId) {
-    if (chatroomId === '1') {
-      this.setState({background: 'main'}) // here I want to change the color to red
-    } else if (chatroomId === '2'){
-    	this.setState({background: 'travel' })
-    }
-    else if (chatroomId === '3'){
-    	this.setState({background: 'sport' })
-    }
-    else if(chatroomId === '4'){
-    	this.setState({background: 'comp' })
-   
-  }*/
+	
  	
 
 
@@ -101,14 +89,14 @@ class ChatContainerALL extends Component {
 			<div className="wrapper">
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar ChangingRoom={this.handleChatRoom} Hide={this.handleToggle}/> </aside>
-						{/*{this.state.toggle ?
+						{this.state.toggle ?
 	  					<aside className="aside aside-2" >Toggle private messages
 	  							<p>blaglad</p>
 	  							<p>blaglad</p>
 	  							<p>blaglad</p>
 	  							<p>blaglad</p>
 	  							<p>blaglad</p>
-	  					</aside> : null}*/}
+	  					</aside> : null}
   					</div>
   					<div className='columns'>
 	  					<div className="container1">

@@ -126,7 +126,7 @@ handleChange = (e) => {
        <Particles className='particles' params={particleOptions} />
        <Container>
        <Row>
-          <Col xs="6">  
+          <Col className='first' xs="6">  
               <div className='changingImage'>        
                <HoverImage
                 style={{width: '450px', height: '450px', margin: '20px', display: 'flex'}}                  
@@ -136,9 +136,9 @@ handleChange = (e) => {
                 />    
                 </div>   
 
-                 <Button className='backButton' onClick={this.handleGoBack}>BACK</Button>
+                 
           </Col>
-          <Col xs="6">
+          <Col className='second' xs="6">
           <div className=" col-md-9   " id='formShape'>
             <Form onSubmit={e => this.handleSubmit(e)} >
                 <FormGroup>
@@ -191,7 +191,7 @@ handleChange = (e) => {
                   name="submit" 
                   id="button"                   
                   >Submit</Button>
-                 
+                 <Button className='backButton' onClick={this.handleGoBack}>BACK</Button>
             </Form>
 
           </div>

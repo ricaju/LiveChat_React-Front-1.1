@@ -58,10 +58,10 @@ render() {
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
-				{ /* <Button className="Buttoni" onClick={this.props.Hide}>
+				<Button className="Buttoni" onClick={this.props.Hide}>
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
-				  			<span className='name-of-button-1'>PRIVATE MESSAGES</span>
-				  	</Button>*/}
+				  			
+				  	</Button>
 				  	<Button onClick={()=>this.props.ChangingRoom("1")} className="Buttoni">
 				  	<img className='imgbuttoni' alt='mainchat' src={mainchat}  />
 				  

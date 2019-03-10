@@ -17,9 +17,8 @@
 
 #button{
 	background-color: transparent;
-	border: 2px solid #1F2833;
-	
-	color: white;
+	border: 2px solid #45A29E;	
+	color: #66FCF1;
 	font-weight: bold;
 	font-size: 20px;
 	display: flex;
@@ -44,19 +43,42 @@
     flex-wrap: wrap;
     align-items: center;
     margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
  }
 
  .backButton:hover{
- 	background-color: transparent;
-	border: 2px solid #66FCF1;	
-	color: #45A29E;
+ 	background-color: #1F2833;
+	color: #66FCF1;
+	border: 2px solid #66FCF1;
 	font-weight: bold;
 	font-size: 20px;	
  }
 
  .changingImage{
- 	margin: 20px;
+ 	margin: 50px;
  }
  #photo{
  	display: flex;
  }
+
+ @media screen and (max-width: 450px) {
+   .changingImage {
+    display: none;
+    }
+    .backButton{
+    	font-size: 14px;
+    }
+    #formShape{
+    	height: 80vh;
+    	justify-content: center;
+    	display: flex;
+    	width: auto;
+    }
+    .first{
+    	
+    }
+    .second{
+    	
+    }
+}
