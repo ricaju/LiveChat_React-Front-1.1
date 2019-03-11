@@ -4,25 +4,44 @@ import ChatContainer from './ChatContainer';
 import SendingMessages from './SendingMessages';
 import './ChatContainerALL.css';
 import MessageList from './ChatBox';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+import main from './main.png';
+import sport from './sport.png';
+import comp from './comp.png';
+import travel from './travel.png';
+import UserList from './UserView'
+
+
+const validToken = gql`
+  mutation validToken($token: String!) {
+    validToken(token : $token) {
+			response
+			id
+		}
+  }
+`;
 
 class ChatContainerALL extends Component {
 
 	constructor(props) {
 	    super(props);
 	    this.state = {
-	      toggle: false,
-	      chatroomId: "1"
-	    }
+				toggle: true,
+				redirect: true,
+				chatroomId: "1",
+				id: 0
+			}
 	  }
 
-	handleChatRoom = async (value) => {
-		this.setState({
+
+	handleChatRoom = (value) => {
+		  this.setState({
 			chatroomId: value
-		},() => {
-			console.log("pero");
-		})
-		console.log(this.state.chatroomId)
+		})	
 	}  
+
+	
 
 	handleToggle = () => {
 		if(!this.state.toggle){
@@ -37,19 +56,46 @@ class ChatContainerALL extends Component {
 		}
 	}
 
+  handleTriger = () => {
+    this.setState({ redirect: true }, () => this.props.history.push('/ChatContainerALL'))
+  }
 
-	render() {	
+  handleResponse = async () => {
+  const check_token = localStorage.getItem('jwt')
+  if (check_token) {
+    const token = JSON.parse(check_token)
+    const response = await this.props.mutate({
+       variables: {
+        token: token.data.register || token.data.login
+        }
+      });
+      if(response.data.validToken.response === "True"){
+					this.setState({
+						id: response.data.validToken.id
+					})
+          this.handleTriger();
+      }
+      else {
+        this.setState({ redirect: false }, () => this.props.history.push('/HomePage'))
+      }
+  }
+  else {
+    this.setState({ redirect: false }, () => this.props.history.push('/HomePage'))
+  }
+}
+
+  componentWillMount(){     //ili DidMount?
+    this.handleResponse();
+  }
+
+	render() {
 		return(
 			<div className="wrapper">
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar ChangingRoom={this.handleChatRoom} Hide={this.handleToggle}/> </aside>
 						{this.state.toggle ?
 	  					<aside className="aside aside-2" >Toggle private messages
-	  							<p>blaglad</p>
-	  							<p>blaglad</p>
-	  							<p>blaglad</p>
-	  							<p>blaglad</p>
-	  							<p>blaglad</p>
+	  							<UserList chatroomId = {this.state.chatroomId} id = {this.state.id} ChangingRoom = {this.handleChatRoom}/>
 	  					</aside> : null}
   					</div>
   					<div className='columns'>
@@ -66,4 +112,4 @@ class ChatContainerALL extends Component {
 		}
 	}
 
-export default ChatContainerALL;  
+export default graphql(validToken) (ChatContainerALL);

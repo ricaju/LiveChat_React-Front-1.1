@@ -1,0 +1,87 @@
+
+
+#formShape{
+	padding-top: 5vh;
+	height:  100vh;
+	width: auto;
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	font-family: 'Encode Sans Semi Expanded', sans-serif;
+	font-weight: bold;
+	color: white;
+	margin-left: auto;
+    margin-right: auto;
+    padding-top: 150px;
+	/*border-radius: 10%;*/
+}
+
+#button{
+	background-color: transparent;
+	border: transparent!important;
+	color: #66FCF1;
+	font-weight: bold;
+	font-size: 20px;
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+    font-family: 'Montserrat Subrayada', sans-serif;
+	
+}
+#button:hover {
+	background-color: transparent;
+	color: #66FCF1;
+	border: 2px solid #66FCF1;
+
+}
+ .backButton{
+ 	background-color: transparent;
+	border: transparent!important;
+	color: #66FCF1;
+	font-weight: bold;
+	font-size: 20px;	
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+   font-family: 'Montserrat Subrayada', sans-serif;
+ }
+
+ .backButton:hover{
+ 	background: transparent!important;
+	color: #45A29E;
+	border: transparent!important;
+	font-weight: bold;
+	font-size: 20px;	
+ }
+
+ .changingImage{
+ 	
+ }
+ #photo{
+ 	display: flex;
+ }
+
+ @media screen and (max-width: 450px) {
+   .changingImage {
+    display: none;
+    }
+    .backButton{
+    	font-size: 14px;
+    }
+    #formShape{
+    	height: 80vh;
+    	justify-content: center;
+    	display: flex;
+    	width: auto;
+    }
+    .first{
+    	
+    }
+    .second{
+    	
+    }
+}

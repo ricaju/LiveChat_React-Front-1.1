@@ -4,13 +4,17 @@ import Particles from 'react-particles-js';
 import Login from '../Login';
 import Registration from '../Registration';
 import Logo from '../Logo/Logo.js';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button, ButtonGroup  } from 'reactstrap';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import '../Login.css';
 
 const validToken = gql`
   mutation validToken($token: String!) {
-    validToken(token : $token)
+    validToken(token : $token){
+      response
+      id
+    }
   }
 `;
 
@@ -47,13 +51,20 @@ class HomePage extends Component {
     const token = JSON.parse(check_token)
     const response = await this.props.mutate({
        variables: {
-        token: token.data.register || token.data.login
+        token: token.data.register || token.data.login || token.data.logout
         }
       });
-      if(JSON.stringify(response) === '{"data":{"validToken":"True"}}'){
+      if(response.data.validToken.response === "True"){
           this.handleTriger();
       }
-  }}
+      else {
+        this.setState({ redirect: false }, () => this.props.history.push('/'))
+      }
+  }
+  else {
+    this.setState({ redirect: false }, () => this.props.history.push('/'))
+  }
+}
 
   componentWillMount(){     //ili DidMount?
     this.handleResponse();
@@ -84,8 +95,10 @@ class HomePage extends Component {
             <Col xs="6" >
               <Row className="red">
                 <Col>
-                  <Button id='login' onClick={this.handeLog}>Login</Button>
-                  <Button id='registration' onClick={this.handleReg}>Registration</Button>
+                  <ButtonGroup md= 'auto' className="positionOfButtons"> {/*css is in login.css*/}
+                  <Button  id='login' onClick={this.handeLog}>Login</Button>
+                  <Button  id='registration' onClick={this.handleReg}>Register</Button>
+                  </ButtonGroup>
                   {this.state.login ? <Login trigerChat={this.handleTriger} /> : null}
                   {this.state.registration ? <Registration trigerChat={this.handleTriger} /> : null}
                 </Col>

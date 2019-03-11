@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import {Form, Input, Button, Container} from 'reactstrap'; 
+import {Form, Input, Button, Container, ButtonGroup} from 'reactstrap'; 
 import './SendingMessages.css';
 import smileicon from './smileicon.png';
 import gificon from './gificon.png';
@@ -12,7 +12,7 @@ class SendingMessages extends Component {
 		super(props);
 		this.state = {
 			text: "",
-			chatroomId: "1"
+			
 			//UserId:
 		}
 	}
@@ -26,7 +26,8 @@ class SendingMessages extends Component {
 			variables: {
 				text: this.state.text, 
 				chatroomId: this.props.chatroomId,
-				token: token
+				token: token,
+				
 				}
 		});
 		this.setState({ text: "" })
@@ -35,14 +36,14 @@ class SendingMessages extends Component {
 	handleKeyPress = async (e) => {
 		if(e.key === "Enter") {
 			this.sendingMessage()
-	}
+		}
 	}
 
 
 	render() {
 		return(
 			<div className="d-flex">
-				<Container className="p-2 m col-10">
+				<Container className="p-3 m col-10">
 					<Form>
 						<Input
 							type="textarea"
@@ -58,16 +59,21 @@ class SendingMessages extends Component {
 					</Form>					
 				</Container>
 				<Container className=" p-1 col-2 btn-all">
-					<Button id='btn1' 
+					<ButtonGroup vertical size="sm">
+					  <Button id='btn1' 
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
-					<Button className= 'btn-all' id ='btn2'
-						><img style={{height: 25, width: 25}} alt='smile' src={smileicon}/>
+
+					 {/* <Button className= 'btn-all' id ='btn2'
+						><img id='emoji-icon' alt='smile' src={smileicon}/>
+						
 					</Button>
-					<Button  className= 'btn-all' id= 'btn3'
-						><img style={{height: 25, width: 25}} alt='smile' src={gificon}/>
-					</Button>
+
+					  <Button  className= 'btn-all' id= 'btn3'
+						><img id='emoji-icon'  alt='smile' src={gificon}/>
+					</Button>*/}
+				 </ButtonGroup>
 
 				</Container>
 			</div>
@@ -79,9 +85,10 @@ class SendingMessages extends Component {
 }
 
 const addMessageMutation= gql` 
-  mutation addMessage($text: String!, $chatroomId: String!,$token: String!) {
-    addMessage(text: $text, chatroomId: $chatroomId, token: $token) {
-    	text
+  mutation addMessage($text: String!, $chatroomId: String!, $token: String!) {
+    addMessage(text: $text, chatroomId: $chatroomId, token: $token ) {
+		text
+		
     }
   }
 `;

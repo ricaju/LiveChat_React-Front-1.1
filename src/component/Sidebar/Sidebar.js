@@ -6,6 +6,7 @@ import sportsicon from './sportsicon.png';
 import techicon from './techicon.png';
 import travelicon from './travelicon.png';
 import logouticon from './logouticon.png';
+import mainchat from './mainchat.png';
 import '../ChatContainerALL.css';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import {withRouter} from "react-router-dom";
@@ -25,8 +26,7 @@ class Sidebar extends Component {
     this.state = {
       dropdownOpen: false,
       editProfile: false,
-	  logout: false,
-	  logged_token: JSON.parse(localStorage.getItem('jwt'))
+			logout: false,
     };
   }
 
@@ -41,9 +41,10 @@ class Sidebar extends Component {
   }
 
 	handleLogout = async () => {
+		const logged_token = JSON.parse(localStorage.getItem('jwt'));
 		var logout_token = await this.props.mutate( {
 			variables: {
-				logged_token: this.state.logged_token.data.register || this.state.logged_token.data.login
+				logged_token: logged_token.data.register || logged_token.data.login
 				}
 			}
 		)
@@ -57,24 +58,27 @@ render() {
 	<div className="d-flex justify-content-start" id='cont'>
 		<div className="groups">
 			<ButtonGroup vertical>
-				  <Button className="Buttoni" color="success" onClick={this.props.Hide}>
+				<Button className="Buttoni" onClick={this.props.Hide}>
 				  			<img className='imgbuttoni'  alt='messagesicon' src={messagesicon}/>
-				  				PRIVATE MESSAGES
+				  			
 				  	</Button>
-					<Button className="Buttoni" color="warning"><img className='imgbuttoni' alt='travel' src={travelicon}  onClick={(value) => this.props.ChangingRoom("2")}/>
-						TRAVEL
+				  	<Button onClick={()=>this.props.ChangingRoom("1")} className="Buttoni">
+				  	<img className='imgbuttoni' alt='mainchat' src={mainchat}  />
+				  
+				  	</Button>
+					<Button  onClick={()=>this.props.ChangingRoom("2")} className="Buttoni" ><img className='imgbuttoni' alt='travel' src={travelicon} />
+						
 					</Button>
-				    <Button className="Buttoni" color="info"><img className='imgbuttoni' alt='sportsicon' src={sportsicon} onClick={(value) => this.props.ChangingRoom("3")}/>
-				    	SPORT
+				    <Button onClick={()=>this.props.ChangingRoom("3")} className="Buttoni" ><img className='imgbuttoni' alt='sportsicon' src={sportsicon} />
+				    
 				    </Button>
-					<Button className="Buttoni" color="danger"><img className='imgbuttoni' alt='techicon' src={techicon}  onClick={(value) => this.props.ChangingRoom("4")}/>
-						TECH
+					<Button onClick={()=>this.props.ChangingRoom("4")} className="Buttoni" ><img className='imgbuttoni' alt='techicon' src={techicon}  />
+						
 					</Button>
-					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni" color="primary">
-						  <DropdownToggle caret><img className='imgbuttoni' alt='logout' src={logouticon}/>
-						    SETTINGS
+					<ButtonDropdown direction="right" isOpen={this.state.dropdownOpen} toggle={this.toggle} className="Buttoni">
+						  <DropdownToggle className="Buttoni" caret><img className='imgbuttoni' alt='logout' src={logouticon}/>						  
 						  </DropdownToggle>
-						  <DropdownMenu>
+						  <DropdownMenu className='pop-out-button'>
 						    <DropdownItem onClick={this.handleEditProfile} >Edit profile</DropdownItem>
 						    <DropdownItem onClick={this.handleLogout}>LOGOUT</DropdownItem>
 						  </DropdownMenu>
