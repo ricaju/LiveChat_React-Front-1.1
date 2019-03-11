@@ -41,7 +41,8 @@
 .container1 {
     background: #0B0C10;
     height: 70vh;
-    border: solid 1px #45A29E;   
+    border: solid 1px #45A29E;
+    overflow-y: scroll;  
 }
 
 
@@ -70,9 +71,7 @@
   background: #45A29E;
   border: solid 2px #66FCF1;
 }*/
-  .messageArea{
-    overflow-y: scroll;
-  }
+  
    .Buttoni {
      color:black;
      height: 16.7vh;

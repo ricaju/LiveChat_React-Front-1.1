@@ -40,8 +40,7 @@ class ChatContainerALL extends Component {
 	handleChatRoom = (value) => {
 		  this.setState({
 			chatroomId: value
-		})
-		console.log(value)		
+		})	
 	}  
 
 	
