@@ -129,7 +129,7 @@ handleChange = (e) => {
           <Col className='first' xs="6">  
               <div className='changingImage'>        
                <HoverImage
-                style={{width: '450px', height: '450px', margin: '20px', display: 'flex'}}                  
+                style={{width: '550px', height: '550px',marginTop:'8vh', marginLeft: '-4vh', display: 'flex'}}                  
                   src={img1}
                   hoverSrc={img2}
                   id='photo'

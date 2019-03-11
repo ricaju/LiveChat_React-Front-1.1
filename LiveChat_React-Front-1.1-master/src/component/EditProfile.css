@@ -4,20 +4,21 @@
 	padding-top: 5vh;
 	height:  100vh;
 	width: auto;
-	background-color: rgba(69, 162, 158, 0.6);
+	background-color: transparent;
 	display: flex;
 	justify-content: center;
-	
+	font-family: 'Encode Sans Semi Expanded', sans-serif;
 	font-weight: bold;
 	color: white;
 	margin-left: auto;
     margin-right: auto;
+    padding-top: 150px;
 	/*border-radius: 10%;*/
 }
 
 #button{
 	background-color: transparent;
-	border: 2px solid #45A29E;	
+	border: transparent!important;
 	color: #66FCF1;
 	font-weight: bold;
 	font-size: 20px;
@@ -25,10 +26,11 @@
     flex-wrap: wrap;
     align-items: center;
     margin: auto;
+    font-family: 'Montserrat Subrayada', sans-serif;
 	
 }
 #button:hover {
-	background-color: #1F2833;
+	background-color: transparent;
 	color: #66FCF1;
 	border: 2px solid #66FCF1;
 
@@ -45,6 +47,7 @@
     margin: 10px;
     margin-left: auto;
     margin-right: auto;
+   font-family: 'Montserrat Subrayada', sans-serif;
  }
 
  .backButton:hover{
@@ -56,7 +59,7 @@
  }
 
  .changingImage{
- 	margin: 50px;
+ 	
  }
  #photo{
  	display: flex;

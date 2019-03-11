@@ -26,7 +26,7 @@
 
 .aside-2 {
   background: #1F2833;
-  border: solid 1px #45A29E;
+  border: solid 2px #66FCF1;
   height: 100vh;
   width: 300px;
  padding-left: 10px;
@@ -41,7 +41,7 @@
 .container1 {
     background: #0B0C10;
     height: 70vh;
-    border: solid 2px #45A29E;   
+    border: solid 1px #45A29E;   
 }
 
 
@@ -88,6 +88,8 @@
     .Buttoni:focus{
       background: #66FCF1;
     }
+  
+
   .imgbuttoni{
     width: 100px;
     height: 100px;  
