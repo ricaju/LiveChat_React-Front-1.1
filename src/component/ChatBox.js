@@ -26,6 +26,13 @@ const messagesQuery = gql`
 }
 `;
 
+const longToDate = (millisec) => {
+  var db_time = parseInt(millisec)
+  var db_time2 = new Date(db_time)
+  var date = db_time2.toLocaleDateString();
+  var time = db_time2.toLocaleTimeString();
+  return time + " " + date
+}
 
 const MessageItem = ({ message }) => (
   <li className='listItems'>
@@ -33,7 +40,7 @@ const MessageItem = ({ message }) => (
     <span className='spaceBetween'>&nbsp;&nbsp;&nbsp;</span>
      <span className='messages'> {message.text} </span> 
      <span className='spaceBetween'>&nbsp;&nbsp;&nbsp;</span>
-     <span className='createdAt'> {message.createdAt} </span> 
+     <span className='createdAt'> {longToDate(message.createdAt)} </span> 
     
   </li>
 );
