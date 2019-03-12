@@ -64,15 +64,6 @@ class SendingMessages extends Component {
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
-
-					 {/* <Button className= 'btn-all' id ='btn2'
-						><img id='emoji-icon' alt='smile' src={smileicon}/>
-						
-					</Button>
-
-					  <Button  className= 'btn-all' id= 'btn3'
-						><img id='emoji-icon'  alt='smile' src={gificon}/>
-					</Button>*/}
 				 </ButtonGroup>
 
 				</Container>

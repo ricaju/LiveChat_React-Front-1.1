@@ -10,10 +10,14 @@ import main from './main.png';
 import sport from './sport.png';
 import comp from './comp.png';
 import travel from './travel.png';
+import UserList from './UserView'
 
 const validToken = gql`
   mutation validToken($token: String!) {
-    validToken(token : $token)
+    validToken(token : $token) {
+			response
+			id
+		}
   }
 `;
 
@@ -24,8 +28,8 @@ class ChatContainerALL extends Component {
 	    this.state = {
 				toggle: true,
 				redirect: true,
-				chatroomId: "1"
-				
+				chatroomId: "1",
+				id: 0
 			}
 	  }
 
@@ -36,8 +40,7 @@ class ChatContainerALL extends Component {
 	handleChatRoom = (value) => {
 		  this.setState({
 			chatroomId: value
-		})
-		console.log(value)		
+		})	
 	}  
 
 	
@@ -68,7 +71,10 @@ class ChatContainerALL extends Component {
         token: token.data.register || token.data.login
         }
       });
-      if(response.data.validToken === "True"){
+      if(response.data.validToken.response === "True"){
+					this.setState({
+						id: response.data.validToken.id
+					})
           this.handleTriger();
       }
       else {
@@ -90,16 +96,13 @@ class ChatContainerALL extends Component {
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar ChangingRoom={this.handleChatRoom} Hide={this.handleToggle}/> </aside>
 						{this.state.toggle ?
-	  					<aside className="aside aside-2" >Toggle private messages
-	  							<p>blaglad</p>
-	  							<p>blaglad</p>
-	  							<p>blaglad</p>
-	  							<p>blaglad</p>
-	  							<p>blaglad</p>
+	  					<aside className="aside aside-2" >
+	  							<p id='pm'>Private messages:</p>	  							
+	  							<UserList  chatroomId = {this.state.chatroomId} id = {this.state.id} ChangingRoom = {this.handleChatRoom}/>		
 	  					</aside> : null}
   					</div>
   					<div className='columns'>
-	  					<div className="container1">
+	  					<div className="container1" >
 	  						<MessageList chatroomId = {this.state.chatroomId}/>
 						</div>
 						<div className='container2'>

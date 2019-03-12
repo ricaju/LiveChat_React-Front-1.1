@@ -13,7 +13,6 @@
 	margin-left: auto;
     margin-right: auto;
     padding-top: 150px;
-	/*border-radius: 10%;*/
 }
 
 #button{
@@ -26,15 +25,15 @@
     flex-wrap: wrap;
     align-items: center;
     margin: auto;
-    font-family: 'Montserrat Subrayada', sans-serif;
-	
+    font-family: 'Montserrat Subrayada', sans-serif;	
 }
+
 #button:hover {
 	background-color: transparent;
 	color: #66FCF1;
 	border: 2px solid #66FCF1;
-
 }
+
  .backButton{
  	background-color: transparent;
 	border: transparent!important;
@@ -58,30 +57,29 @@
 	font-size: 20px;	
  }
 
- .changingImage{
- 	
- }
+
  #photo{
  	display: flex;
  }
+ .infoEdit{
+ 	justify-content: center;
+ 	font-size: 25px;
+ 	color: #45A29E;
+ 	font-family: 'Montserrat Subrayada', sans-serif;
+ 
+ }
 
  @media screen and (max-width: 450px) {
-   .changingImage {
-    display: none;
-    }
+
+  
     .backButton{
     	font-size: 14px;
     }
     #formShape{
-    	height: 80vh;
+    	width: 100%;
     	justify-content: center;
     	display: flex;
     	width: auto;
     }
-    .first{
-    	
-    }
-    .second{
-    	
-    }
+
 }
