@@ -5,7 +5,6 @@ import {Form, FormGroup, Label, Input, Button, Container, Row, Col } from 'react
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import './EditProfile.css';
-import gificon from './gificon.png';
 import img1 from './img1.png';
 import img2 from './img2.png';
 import HoverImage from "react-hover-image";
@@ -125,11 +124,11 @@ handleChange = (e) => {
     <>
        <Particles className='particles' params={particleOptions} />
        <Container>
-       <Row>
-          <Col className='first' xs="6">  
+       <Row className='row'>
+          <Col className='first col-xs-6 hidden-xs-down' >  
               <div className='changingImage'>        
                <HoverImage
-                style={{width: '550px', height: '550px',marginTop:'8vh', marginLeft: '-4vh', display: 'flex'}}                  
+                style={{width: '500px', height: '500px',marginTop:'8vh', marginLeft: '-4vh', display: 'flex'}}                  
                   src={img1}
                   hoverSrc={img2}
                   id='photo'
@@ -138,10 +137,11 @@ handleChange = (e) => {
 
                  
           </Col>
-          <Col className='second' xs="6">
+          <Col className='second col-xs-6'>
           <div className=" col-md-9   " id='formShape'>
             <Form onSubmit={e => this.handleSubmit(e)} >
                 <FormGroup>
+                  <p className='infoEdit'>EDIT YOUR INFO</p>
                   <Label className= 'white' htmlFor="username">Username</Label>
                   <Input 
                   type="text" 

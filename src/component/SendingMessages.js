@@ -3,8 +3,6 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import {Form, Input, Button, Container, ButtonGroup} from 'reactstrap'; 
 import './SendingMessages.css';
-import smileicon from './smileicon.png';
-import gificon from './gificon.png';
 
 
 class SendingMessages extends Component {
@@ -64,15 +62,6 @@ class SendingMessages extends Component {
 						onClick={this.sendingMessage}
 						>Send
 					</Button>
-
-					 {/* <Button className= 'btn-all' id ='btn2'
-						><img id='emoji-icon' alt='smile' src={smileicon}/>
-						
-					</Button>
-
-					  <Button  className= 'btn-all' id= 'btn3'
-						><img id='emoji-icon'  alt='smile' src={gificon}/>
-					</Button>*/}
 				 </ButtonGroup>
 
 				</Container>

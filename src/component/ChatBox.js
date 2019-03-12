@@ -3,28 +3,26 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import './ChatBox.css';
 
-import mainchat from './Sidebar/mainchat.png';
-
 
 const messageAddedSubscription = gql`
     subscription($chatroomId: String!){
     messageAdded(chatroomId: $chatroomId ) {
-    	id 
-    	username
-    	text
-    	createdAt
+      id 
+      username
+      text
+      createdAt
     }
   }
 `; 
 
 const messagesQuery = gql` 
-	query messages($chatroomId: String!){
-	messages(chatroomId: $chatroomId) {
-		id
-		username
-		text
-		createdAt
-	}
+  query messages($chatroomId: String!){
+  messages(chatroomId: $chatroomId) {
+    id
+    username
+    text
+    createdAt
+  }
 }
 `;
 
@@ -37,7 +35,7 @@ const longToDate = (millisec) => {
 }
 
 const MessageItem = ({ message }) => (
-  <li className='listItems'>
+  <li className='listItems' >
     <span className='userName'>{message.username}: </span>
     <span className='spaceBetween'>&nbsp;&nbsp;&nbsp;</span>
      <span className='messages'> {message.text} </span> 
@@ -57,6 +55,7 @@ const MessageListView = class extends Component {
       <ul style={{ listStyleType: 'none', padding: 5 }}>
       {data.messages.map(message => <MessageItem key={message.id} message={message} />)}
       </ul>
+
     );
   }
 };

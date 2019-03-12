@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import Sidebar from './Sidebar/Sidebar';
-import ChatContainer from './ChatContainer';
 import SendingMessages from './SendingMessages';
 import './ChatContainerALL.css';
 import MessageList from './ChatBox';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
-import main from './main.png';
-import sport from './sport.png';
-import comp from './comp.png';
-import travel from './travel.png';
 import UserList from './UserView'
-
 
 const validToken = gql`
   mutation validToken($token: String!) {
@@ -27,13 +21,12 @@ class ChatContainerALL extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {
-				toggle: true,
+				toggle: false,
 				redirect: true,
 				chatroomId: "1",
 				id: 0
 			}
 	  }
-
 
 	handleChatRoom = (value) => {
 		  this.setState({
@@ -94,12 +87,13 @@ class ChatContainerALL extends Component {
 					<div className='rows'>
 						<aside className="aside aside-1"><Sidebar ChangingRoom={this.handleChatRoom} Hide={this.handleToggle}/> </aside>
 						{this.state.toggle ?
-	  					<aside className="aside aside-2" >Toggle private messages
-	  							<UserList chatroomId = {this.state.chatroomId} id = {this.state.id} ChangingRoom = {this.handleChatRoom}/>
+	  					<aside className="aside aside-2" >
+	  							<p id='pm'>Private messages:</p>	  							
+	  							<UserList  chatroomId = {this.state.chatroomId} id = {this.state.id} ChangingRoom = {this.handleChatRoom}/>		
 	  					</aside> : null}
   					</div>
   					<div className='columns'>
-	  					<div className="container1">
+	  					<div className="container1" >
 	  						<MessageList chatroomId = {this.state.chatroomId}/>
 						</div>
 						<div className='container2'>

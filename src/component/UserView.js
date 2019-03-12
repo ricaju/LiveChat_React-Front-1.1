@@ -1,17 +1,17 @@
-
 import React, { Component } from "react";
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Button } from 'reactstrap';
+import './ChatContainerALL.css';
 
 const view = gql`
-	query userOverview ($id: Int!){
-		userOverview (id: $id){
+  query userOverview ($id: Int!){
+    userOverview (id: $id){
       username
       id
       is_logged_in
     }
-	}
+  }
 `;
 
 const UserAdded = gql`
@@ -33,7 +33,7 @@ const handle_onclick = (user, args) => {
 
 const UserItem = ({ user, args }) => (
     <li className='listItems'>
-      <Button onClick={ () => handle_onclick( user, args )}><span className='userName'> {user.username} </span></Button>
+      <Button className='users' onClick={ () => handle_onclick( user, args )}><span className='userName'> {user.username} </span></Button>
     </li>
   );
 
